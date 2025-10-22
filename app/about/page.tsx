@@ -1,7 +1,6 @@
 // About page showcasing Spencer Bright's background, education, and technical journey.
 import type { Metadata } from "next"
 import Link from "next/link"
-
 import { InspirationSection } from "@/components/about/inspiration-section"
 import { ExperienceSection } from "@/components/about/experience-section"
 import { RecentWriting } from "@/components/about/recent-writing"
