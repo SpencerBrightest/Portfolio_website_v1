@@ -46,6 +46,7 @@
   --color-nav-foreground: var(--nav-foreground);
   --color-nav-muted: var(--nav-muted);
   --color-nav-border: var(--nav-border);
+  --color-status: var(--status);
   --shadow-nav-dropdown: var(--nav-dropdown-shadow);
   --container-page: 68.75rem;
   --spacing-gutter: 1.5rem;
@@ -101,6 +102,7 @@
   --nav-foreground: #111111;
   --nav-muted: #5F5F5A;
   --nav-border: #E2E2DE;
+  --status: #1FA85A;
   --nav-dropdown-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
@@ -143,6 +145,7 @@
   --nav-foreground: #F2F2EF;
   --nav-muted: #9A9A95;
   --nav-border: #242422;
+  --status: #3DDC84;
   --nav-dropdown-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
 }
 

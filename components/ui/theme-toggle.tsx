@@ -1,6 +1,6 @@
 "use client"
 
-import { Moon, Sun } from "lucide-react"
+import { Monitor, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useSyncExternalStore } from "react"
 
@@ -10,6 +10,12 @@ const subscribe = () => () => {}
 const getClientSnapshot = () => true
 const getServerSnapshot = () => false
 
+const themeOptions = [
+  { value: "light", label: "Light", Icon: Sun },
+  { value: "dark", label: "Dark", Icon: Moon },
+  { value: "system", label: "Device", Icon: Monitor },
+] as const
+
 export function ThemeToggle() {
   const mounted = useSyncExternalStore(
     subscribe,
@@ -17,34 +23,38 @@ export function ThemeToggle() {
     getServerSnapshot
   )
   const { setTheme, theme } = useTheme()
-  const isDark = theme !== "light"
-  const nextTheme = isDark ? "light" : "dark"
+  const activeTheme = mounted ? theme ?? "system" : "system"
 
   return (
-    <Button
-      type="button"
-      variant="ghost"
-      size="icon-lg"
-      className="size-10 rounded-lg text-nav-muted hover:bg-nav-hover hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
-      aria-label={mounted ? `Switch to ${nextTheme} mode` : "Theme toggle"}
-      title={mounted ? `Switch to ${nextTheme} mode` : "Theme toggle"}
-      disabled={!mounted}
-      onClick={() => setTheme(nextTheme)}
+    <div
+      role="group"
+      aria-label="Color theme"
+      className="inline-flex shrink-0 items-center gap-0.5 rounded-full border border-nav-border bg-nav-panel p-1"
     >
-      <span className="relative grid size-5 place-items-center" aria-hidden="true">
-        <Sun
-          className={`absolute size-[18px] text-nav-foreground transition-[transform,opacity] duration-200 ${
-            mounted && isDark ? "rotate-0 opacity-100" : "rotate-90 opacity-0"
-          }`}
-          strokeWidth={1.75}
-        />
-        <Moon
-          className={`absolute size-[18px] text-nav-foreground transition-[transform,opacity] duration-200 ${
-            mounted && !isDark ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"
-          }`}
-          strokeWidth={1.75}
-        />
-      </span>
-    </Button>
+      {themeOptions.map(({ value, label, Icon }) => {
+        const isActive = activeTheme === value
+
+        return (
+          <Button
+            key={value}
+            type="button"
+            variant="ghost"
+            size="icon-sm"
+            aria-label={`${label} theme`}
+            aria-pressed={isActive}
+            title={`${label} theme`}
+            className={`size-9 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground ${
+              isActive
+                ? "bg-nav-hover text-nav-foreground"
+                : "text-nav-muted hover:bg-nav-hover hover:text-nav-foreground"
+            }`}
+            onClick={() => setTheme(value)}
+          >
+            <Icon className="size-[18px]" aria-hidden="true" strokeWidth={1.75} />
+            <span className="sr-only">{label}</span>
+          </Button>
+        )
+      })}
+    </div>
   )
 }

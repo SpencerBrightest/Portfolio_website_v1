@@ -68,11 +68,11 @@ export function Navbar() {
       className="sticky top-0 z-50 w-full border-b border-nav-border bg-nav-background/88 backdrop-blur-xl"
     >
       <Container>
-        <div className="flex h-16 items-center justify-between gap-4">
+        <div className="flex h-16 items-center justify-between gap-2 nav:grid nav:grid-cols-[1fr_auto_1fr] nav:gap-4">
           <Link
             href="/"
             className="inline-flex min-h-11 shrink-0 items-center rounded-lg text-[0.95rem] font-semibold tracking-[0.04em] text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
-            aria-label="Pencer Bright home"
+            aria-label="Spencer Bright home"
             aria-current={pathname === "/" ? "page" : undefined}
           >
             $B
@@ -80,7 +80,7 @@ export function Navbar() {
 
           <nav
             aria-label="Primary navigation"
-            className="hidden items-center gap-1 nav:flex"
+            className="hidden items-center gap-1 nav:flex nav:justify-self-center"
           >
             <Link
               href="/"
@@ -144,10 +144,13 @@ export function Navbar() {
             <Link href="/#contact" className={navLinkClass}>
               Contact
             </Link>
-            <ThemeToggle />
           </nav>
 
-          <div className="flex items-center gap-1 nav:hidden">
+          <div className="hidden items-center justify-self-end nav:flex">
+            <ThemeToggle />
+          </div>
+
+          <div className="flex items-center justify-self-end gap-1 nav:hidden">
             <ThemeToggle />
             <Button
               ref={menuButtonRef}

@@ -1,25 +1,11 @@
+import { Hero } from "@/components/hero/hero"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
 
 export default function Home() {
   return (
     <main className="flex-1">
-      <section className="flex min-h-[calc(100svh-4rem)] items-center py-20 sm:py-28">
-        <Container>
-          <div className="max-w-3xl">
-            <p className="mb-5 font-mono text-xs uppercase tracking-[0.14em] text-nav-muted">
-              Developer · Builder · Creator
-            </p>
-            <Heading className="text-5xl leading-[1.03] sm:text-7xl">
-              Pencer Bright
-            </Heading>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-nav-muted">
-              Portfolio and writing are taking shape. Check back as I share what
-              I build and learn.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <Hero />
 
       <section
         id="contact"
