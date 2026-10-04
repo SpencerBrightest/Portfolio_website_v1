@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -7,9 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-sans: var(--font-instrument-sans);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-instrument-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -39,6 +40,16 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-nav-background: var(--nav-background);
+  --color-nav-panel: var(--nav-panel);
+  --color-nav-hover: var(--nav-hover);
+  --color-nav-foreground: var(--nav-foreground);
+  --color-nav-muted: var(--nav-muted);
+  --color-nav-border: var(--nav-border);
+  --shadow-nav-dropdown: var(--nav-dropdown-shadow);
+  --container-page: 68.75rem;
+  --spacing-gutter: 1.5rem;
+  --breakpoint-nav: 51.25rem;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -81,6 +92,16 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --font-instrument-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", ui-monospace, monospace;
+  --nav-background: #FAFAF8;
+  --nav-panel: #FFFFFF;
+  --nav-hover: #EDEDEA;
+  --nav-foreground: #111111;
+  --nav-muted: #5F5F5A;
+  --nav-border: #E2E2DE;
+  --nav-dropdown-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
 .dark {
@@ -115,6 +136,14 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --nav-background: #0B0B0B;
+  --nav-panel: #0F0F0F;
+  --nav-hover: #1A1A19;
+  --nav-foreground: #F2F2EF;
+  --nav-muted: #9A9A95;
+  --nav-border: #242422;
+  --nav-dropdown-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
 }
 
 @layer base {
