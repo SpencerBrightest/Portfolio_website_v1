@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: WorkPageProps): Promise<Metad
   if (!project) return { title: "Project not found" }
 
   return {
-    title: `${project.title} | Pencer Bright`,
+    title: `${project.title} | Spencer Bright`,
     description: project.description,
   }
 }

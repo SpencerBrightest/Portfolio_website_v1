@@ -5,8 +5,8 @@ import { ThemeProvider } from "@/components/ui/theme-provider"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Pencer Bright — Developer, Builder, Creator",
-  description: "Portfolio and writing by Pencer Bright.",
+  title: "Spencer Bright — Developer, Builder, Creator",
+  description: "Portfolio and writing by Spencer Bright.",
 }
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

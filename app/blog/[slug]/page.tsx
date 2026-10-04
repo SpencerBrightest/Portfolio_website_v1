@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   if (!post) return { title: "Post not found" }
 
   return {
-    title: `${post.title}${post.isDraft ? " (Draft)" : ""} | Pencer Bright`,
+    title: `${post.title}${post.isDraft ? " (Draft)" : ""} | Spencer Bright`,
     description: post.description,
   }
 }

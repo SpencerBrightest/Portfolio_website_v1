@@ -1,4 +1,4 @@
-# DESIGN.md: $PENCER BRIGHT design system (V1)
+# DESIGN.md: $SPENCER BRIGHT design system (V1)
 
 The single source of truth for how the site looks. Use these values exactly. If something is not defined here, choose the simplest option that fits the principles below.
 
@@ -15,7 +15,7 @@ The single source of truth for how the site looks. Use these values exactly. If 
 
 | | |
 |---|---|
-| Name | $PENCER BRIGHT |
+| Name | $SPENCER BRIGHT |
 | Short mark | $B (set in the text font, weight 600, letter-spacing 0.04em) |
 | Role line | Developer · Builder · Creator |
 | Footer phrase | Build · Learn · Grow |
