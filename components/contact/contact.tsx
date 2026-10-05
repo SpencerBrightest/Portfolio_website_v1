@@ -86,7 +86,7 @@ export function Contact() {
             >
               Have a project in mind or just want to talk?
             </Heading>
-            <p className="mt-1.5 max-w-lg text-sm leading-5 text-nav-muted">
+            <p className="mt-1.5 max-w-lg text-nav-muted">
               I’m always open to new opportunities, collaborations and interesting conversations.
             </p>
           </div>

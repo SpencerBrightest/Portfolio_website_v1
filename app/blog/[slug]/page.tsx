@@ -79,7 +79,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ) : null}
             <Heading>{post.title}</Heading>
             {post.description ? (
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-nav-muted">
+              <p className="mt-5 max-w-2xl text-nav-muted">
                 {post.description}
               </p>
             ) : null}

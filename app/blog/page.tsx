@@ -15,7 +15,7 @@ export default async function BlogPage() {
             Writing
           </p>
           <Heading id="blog-heading">Notes and ideas</Heading>
-          <p className="mt-5 max-w-xl text-base leading-7 text-nav-muted">
+          <p className="mt-5 max-w-xl text-nav-muted">
             Thoughts and lessons from what I’m building and learning.
           </p>
 

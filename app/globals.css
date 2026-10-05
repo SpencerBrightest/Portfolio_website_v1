@@ -12,7 +12,7 @@
   --font-sans: var(--font-instrument-sans);
   --font-mono: var(--font-jetbrains-mono);
   --font-heading: var(--font-instrument-sans);
-  --font-about-display: var(--about-font-display);
+  --font-about-display: var(--space-grotesk);
   --color-about-heading: var(--about-heading);
   --color-about-text: var(--about-text);
   --color-about-accent: var(--about-accent);
@@ -101,7 +101,9 @@
 
   --font-instrument-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-jetbrains-mono: "JetBrains Mono", ui-monospace, monospace;
-  --about-font-display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --space-grotesk: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body-copy-size: 1.125rem;
+  --body-copy-line-height: 1.6;
   --about-heading: #111111;
   --about-text: #5F5F5A;
   --about-accent: #2563EB;
@@ -164,7 +166,6 @@
   --scroll-thumb-hover: #555550;
   --status: #3DDC84;
   --nav-dropdown-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
-  --about-font-display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --about-heading: #FFFFFF;
   --about-text: #BCBFC6;
   --about-accent: #3B82F6;
@@ -197,6 +198,13 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background-color: var(--scroll-thumb-hover);
+  }
+}
+
+@layer components {
+  p {
+    font-size: var(--body-copy-size);
+    line-height: var(--body-copy-line-height);
   }
 }
 

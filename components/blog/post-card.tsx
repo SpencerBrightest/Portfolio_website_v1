@@ -38,7 +38,7 @@ export function PostCard({ post }: PostCardProps) {
           {post.title}
         </Link>
       </Heading>
-      <p className="mt-3 max-w-2xl text-sm leading-6 text-nav-muted">
+      <p className="mt-3 max-w-2xl text-nav-muted">
         {post.description}
       </p>
     </article>

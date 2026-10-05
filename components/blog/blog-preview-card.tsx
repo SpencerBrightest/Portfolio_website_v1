@@ -44,7 +44,7 @@ export function BlogPreviewCard({ post }: BlogPreviewCardProps) {
         <Heading level={3} className="mt-2 text-xl font-medium">
           {post.title}
         </Heading>
-        <p className="mt-2 line-clamp-1 text-sm leading-6 text-nav-muted">
+        <p className="mt-2 line-clamp-1 text-nav-muted">
           {post.description}
         </p>
         <div className="mt-auto flex justify-end pt-5">

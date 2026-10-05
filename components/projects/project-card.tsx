@@ -21,7 +21,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <Heading level={2} className="mt-2 text-lg font-medium tracking-[-0.02em]">
           {project.title}
         </Heading>
-        <p className="mt-2 text-sm leading-6 text-nav-muted">
+        <p className="mt-2 text-nav-muted">
           {project.description}
         </p>
         <p

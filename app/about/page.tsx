@@ -18,7 +18,7 @@ export default function AboutPage() {
             About Me
           </Heading>
 
-          <div className="mt-8 space-y-6 text-lg leading-[1.6] text-about-text sm:mt-10 sm:space-y-7">
+          <div className="mt-8 space-y-6 text-about-text sm:mt-10 sm:space-y-7">
             <p>
               I am a Level 400 Computer Engineering student at the National Higher Polytechnic
               Institute of the University of Bamenda (NAHPI UBA). My ultimate career vision is to

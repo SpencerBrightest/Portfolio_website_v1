@@ -33,7 +33,7 @@ export function Hero() {
                 Spencer Bright
               </Heading>
 
-              <p className="mt-3 max-w-xl text-base leading-7 text-nav-muted sm:text-lg sm:leading-8 nav:mt-5">
+              <p className="mt-3 max-w-xl text-nav-muted nav:mt-5">
                 Portfolio and writing are taking shape. Check back as I share what
                 I build and learn.
               </p>

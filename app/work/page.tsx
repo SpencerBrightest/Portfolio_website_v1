@@ -12,7 +12,7 @@ export default function WorkPage() {
             Work
           </p>
           <Heading id="work-heading">Projects I’ve built</Heading>
-          <p className="mt-4 max-w-xl text-base leading-7 text-nav-muted">
+          <p className="mt-4 max-w-xl text-nav-muted">
             A selection of projects I’ve built and learned from.
           </p>
 

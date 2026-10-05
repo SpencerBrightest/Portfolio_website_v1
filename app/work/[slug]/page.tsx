@@ -58,7 +58,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
             <Heading id="project-heading" className="text-4xl sm:text-5xl">
               {project.title}
             </Heading>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-nav-muted sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-2xl text-nav-muted">
               {project.description}
             </p>
           </header>
