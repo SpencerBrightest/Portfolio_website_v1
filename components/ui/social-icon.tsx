@@ -1,7 +1,7 @@
 import { Mail } from "lucide-react"
-import { siInstagram, siYoutube, siX } from "simple-icons"
+import { siFacebook, siInstagram, siWhatsapp, siYoutube, siX } from "simple-icons"
 
-type SocialPlatform = "email" | "linkedin" | "instagram" | "youtube" | "x"
+type SocialPlatform = "email" | "facebook" | "linkedin" | "instagram" | "youtube" | "x" | "whatsapp"
 
 type SocialIconProps = {
   platform: SocialPlatform
@@ -44,9 +44,11 @@ export function SocialIcon({ platform, className = "size-4" }: SocialIconProps) 
   }
 
   const brandPath = {
+    facebook: siFacebook.path,
     instagram: siInstagram.path,
     youtube: siYoutube.path,
     x: siX.path,
+    whatsapp: siWhatsapp.path,
   }[platform]
 
   return <BrandGlyph path={brandPath} className={className} />

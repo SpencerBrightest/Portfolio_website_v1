@@ -8,7 +8,7 @@ import { siteContact } from "@/data/site"
 
 type ContactSocial = {
   label: string
-  platform: "email" | "linkedin" | "instagram" | "youtube" | "x"
+  platform: "email" | "linkedin" | "instagram" | "youtube" | "facebook"
   href?: string
 }
 
@@ -33,7 +33,7 @@ const socialLinks: ContactSocial[] = [
     platform: "youtube",
     href: siteContact.socials.youtube,
   },
-  { label: "X", platform: "x", href: siteContact.socials.x },
+  { label: "Facebook", platform: "facebook", href: siteContact.socials.facebook },
 ]
 
 function SocialItem({ label, platform, href }: ContactSocial) {
