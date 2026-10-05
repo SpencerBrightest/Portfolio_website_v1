@@ -141,8 +141,12 @@ export function Navbar() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            <Link href="/#contact" className={navLinkClass}>
-              Contact
+            <Link
+              href="/about"
+              className={navLinkClass}
+              aria-current={isCurrentPath(pathname, "/about") ? "page" : undefined}
+            >
+              About
             </Link>
           </nav>
 
@@ -205,11 +209,12 @@ export function Navbar() {
               Blog
             </Link>
             <Link
-              href="/#contact"
+              href="/about"
               className={mobileLinkClass}
+              aria-current={isCurrentPath(pathname, "/about") ? "page" : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Contact
+              About
             </Link>
           </nav>
         </div>

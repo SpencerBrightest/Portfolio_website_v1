@@ -1,5 +1,5 @@
 /* Global theme tokens and styles; adjust --grid-line per theme to tune the hero grid contrast. */
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -12,6 +12,10 @@
   --font-sans: var(--font-instrument-sans);
   --font-mono: var(--font-jetbrains-mono);
   --font-heading: var(--font-instrument-sans);
+  --font-about-display: var(--about-font-display);
+  --color-about-heading: var(--about-heading);
+  --color-about-text: var(--about-text);
+  --color-about-accent: var(--about-accent);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -97,6 +101,10 @@
 
   --font-instrument-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-jetbrains-mono: "JetBrains Mono", ui-monospace, monospace;
+  --about-font-display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --about-heading: #111111;
+  --about-text: #5F5F5A;
+  --about-accent: #2563EB;
   --nav-background: #FAFAF8;
   --nav-panel: #FFFFFF;
   --nav-hover: #EDEDEA;
@@ -156,6 +164,10 @@
   --scroll-thumb-hover: #555550;
   --status: #3DDC84;
   --nav-dropdown-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --about-font-display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --about-heading: #FFFFFF;
+  --about-text: #BCBFC6;
+  --about-accent: #3B82F6;
 }
 
 @layer base {
