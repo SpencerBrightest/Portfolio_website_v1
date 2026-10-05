@@ -8,7 +8,13 @@ const blogDirectory = path.join(process.cwd(), "content", "blog")
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
 // Add new categories here so frontmatter is validated against the same list.
-export const BLOG_CATEGORIES = ["About"] as const
+export const BLOG_CATEGORIES = [
+  "About",
+  "Community",
+  "Mobile",
+  "Product",
+  "Developer tools",
+] as const
 export type BlogCategory = (typeof BLOG_CATEGORIES)[number]
 
 export type BlogImage = {
@@ -23,6 +29,7 @@ type Frontmatter = {
   category?: unknown
   readTime?: unknown
   image?: unknown
+  tags?: unknown
   draft?: unknown
 }
 
@@ -34,6 +41,7 @@ export type BlogPostSummary = {
   category?: BlogCategory
   readTime?: string
   image?: BlogImage
+  tags?: string[]
   readingTime?: number
   isDraft: boolean
   hasContent: boolean
@@ -83,6 +91,12 @@ function parseImage(value: unknown): BlogImage | undefined {
   return src && alt ? { src, alt } : undefined
 }
 
+function parseTags(value: unknown): string[] {
+  if (!Array.isArray(value)) return []
+
+  return value.filter((tag): tag is string => typeof tag === "string").map((tag) => tag.trim()).filter(Boolean)
+}
+
 function toPost(slug: string, rawContent: string): BlogPost {
   const { content, data } = matter(rawContent)
   const frontmatter = data as Frontmatter
@@ -112,6 +126,7 @@ function toPost(slug: string, rawContent: string): BlogPost {
     category: parseCategory(frontmatter.category),
     readTime,
     image: parseImage(frontmatter.image),
+    tags: parseTags(frontmatter.tags),
     readingTime: wordCount > 0 ? Math.max(1, Math.ceil(wordCount / 200)) : undefined,
     isDraft,
     hasContent: body.length > 0,

@@ -1,13 +1,17 @@
-// Blog article route; add MDX components in components/blog/mdx-components.tsx and MDX files in content/blog.
+// MDX article route; body content and metadata live in content/blog/*.mdx.
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
+import { headers } from "next/headers"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
 
+import { ArticleSidebar } from "@/components/blog/article-sidebar"
+import { FollowLinks } from "@/components/blog/follow-links"
 import { mdxComponents } from "@/components/blog/mdx-components"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
-import { getBlogPostBySlug, getVisibleBlogPosts } from "@/lib/blog"
+import { getBlogPostBySlug, getPublishedBlogPosts, getVisibleBlogPosts } from "@/lib/blog"
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>
@@ -44,8 +48,20 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description,
       ...(post.publishedAt ? { publishedTime: post.publishedAt } : {}),
       authors: ["Spencer Bright"],
+      ...(post.image ? { images: [post.image.src] } : {}),
     },
   }
+}
+
+function formatDate(date?: string) {
+  if (!date) return undefined
+
+  return new Date(date).toLocaleDateString("en", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  })
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -56,57 +72,84 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound()
   }
 
-  const metadata = [
-    post.category,
-    post.readTime ?? (post.readingTime ? `${post.readingTime} min read` : undefined),
-  ]
+  const publishedPosts = await getPublishedBlogPosts()
+  const featuredPosts = publishedPosts.filter((featured) => featured.slug !== post.slug)
+  const requestHeaders = await headers()
+  const forwardedHost = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host")
+  const forwardedProtocol = requestHeaders.get("x-forwarded-proto")?.split(",")[0]?.trim()
+  const defaultProtocol =
+    forwardedHost?.startsWith("localhost") || forwardedHost?.startsWith("127.0.0.1")
+      ? "http"
+      : "https"
+  const articleUrl = forwardedHost
+    ? `${forwardedProtocol || defaultProtocol}://${forwardedHost}/blog/${post.slug}`
+    : `/blog/${post.slug}`
+  const metadata = [formatDate(post.publishedAt), post.readTime ?? (post.readingTime ? `${post.readingTime} min` : undefined)]
     .filter((value): value is string => Boolean(value))
     .join(" · ")
 
   return (
-    <main className="flex-1 py-16 sm:py-24">
+    <main className="flex-1 py-10 sm:py-16">
       <Container>
-        <article className="mx-auto max-w-2xl">
-          <Link
-            href="/blog"
-            className="mb-8 inline-flex min-h-11 items-center rounded-sm text-sm text-nav-muted transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
-          >
-            ← Back to blog
-          </Link>
-          <header className="mb-10 border-b border-nav-border pb-8">
-            {metadata ? (
-              <p className="mb-4 font-mono text-xs text-nav-muted">{metadata}</p>
-            ) : null}
-            <Heading>{post.title}</Heading>
-            {post.description ? (
-              <p className="mt-5 max-w-2xl text-nav-muted">
-                {post.description}
-              </p>
-            ) : null}
-            {post.publishedAt ? (
-              <time
-                className="mt-5 block font-mono text-xs text-nav-muted"
-                dateTime={post.publishedAt}
-              >
-                {new Date(post.publishedAt).toLocaleDateString("en", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                  timeZone: "UTC",
-                })}
-              </time>
-            ) : null}
-          </header>
+        <Link
+          href="/blog"
+          className="mb-7 inline-flex min-h-11 items-center rounded-sm text-sm text-nav-muted transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
+        >
+          ← Back to blog
+        </Link>
 
-          {post.body ? (
-            <div className="space-y-6">
-              <MDXRemote source={post.body} components={mdxComponents} />
+        <article aria-labelledby="article-heading">
+          <div className="grid gap-x-12 gap-y-8 nav:grid-cols-[minmax(0,1fr)_15rem] nav:gap-x-10">
+            <header className="min-w-0 nav:col-start-1 nav:row-start-1">
+              {metadata ? (
+                <p className="mb-4 font-mono text-xs uppercase tracking-[0.08em] text-nav-muted">
+                  {metadata}
+                </p>
+              ) : null}
+              <Heading id="article-heading" className="max-w-4xl text-4xl leading-tight sm:text-5xl">
+                {post.title}
+              </Heading>
+              {post.description ? (
+                <p className="mt-5 max-w-3xl text-nav-muted">{post.description}</p>
+              ) : null}
+            </header>
+
+            {post.image ? (
+              <div className="overflow-hidden rounded-[14px] bg-nav-hover nav:col-start-1 nav:row-start-2">
+                <Image
+                  src={post.image.src}
+                  alt={post.image.alt}
+                  width={1400}
+                  height={760}
+                  unoptimized
+                  sizes="(min-width: 51.25rem) 55rem, 100vw"
+                  className="h-auto max-h-[34rem] w-full object-cover"
+                />
+              </div>
+            ) : null}
+
+            <div className="border-t border-nav-border pt-6 nav:col-start-2 nav:row-start-1 nav:row-span-3 nav:mt-0 nav:border-t-0 nav:pt-0">
+              <ArticleSidebar
+                title={post.title}
+                url={articleUrl}
+                tags={post.tags ?? []}
+                featuredPosts={featuredPosts}
+              />
             </div>
-          ) : (
-            <p className="rounded-xl border border-nav-border p-6 text-nav-muted">
-              This post is a draft and doesn’t have content yet.
-            </p>
-          )}
+
+            <div className="nav:col-start-1 nav:row-start-3">
+              {post.body ? (
+                <div className="space-y-6 text-nav-muted">
+                  <MDXRemote source={post.body} components={mdxComponents} />
+                </div>
+              ) : (
+                <p className="rounded-xl border border-nav-border p-6 text-nav-muted">
+                  This post is a draft and doesn’t have content yet.
+                </p>
+              )}
+              <FollowLinks />
+            </div>
+          </div>
         </article>
       </Container>
     </main>
