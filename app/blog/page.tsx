@@ -18,7 +18,7 @@ export default async function BlogPage() {
           </p>
 
           {posts.length > 0 ? (
-            <ul className="mt-10 grid list-none gap-5 p-0 sm:mt-12 sm:gap-6">
+            <ul className="mt-8 grid list-none gap-4 p-0 sm:mt-10 sm:gap-5">
               {posts.map((post) => (
                 <li key={post.slug} className="min-w-0">
                   <PostCard post={post} />

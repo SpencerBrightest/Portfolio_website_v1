@@ -52,6 +52,7 @@
   --color-nav-muted: var(--nav-muted);
   --color-nav-border: var(--nav-border);
   --color-status: var(--status);
+  --color-whatsapp: var(--whatsapp);
   --shadow-nav-dropdown: var(--nav-dropdown-shadow);
   --container-page: 68.75rem;
   --spacing-gutter: 1.5rem;
@@ -119,6 +120,7 @@
   --scroll-thumb-hover: #111111;
   --status: #1FA85A;
   --nav-dropdown-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  --whatsapp: #25D366;
 }
 
 .dark {
@@ -166,6 +168,7 @@
   --scroll-thumb-hover: #555550;
   --status: #3DDC84;
   --nav-dropdown-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --whatsapp: #25D366;
   --about-heading: #FFFFFF;
   --about-text: #BCBFC6;
   --about-accent: #3B82F6;

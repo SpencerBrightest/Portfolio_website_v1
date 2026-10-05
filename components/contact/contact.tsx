@@ -8,7 +8,7 @@ import { siteContact } from "@/data/site"
 
 type ContactSocial = {
   label: string
-  platform: "email" | "linkedin" | "instagram" | "youtube" | "facebook"
+  platform: "email" | "github" | "linkedin" | "instagram" | "youtube" | "facebook"
   href?: string
 }
 
@@ -17,6 +17,11 @@ const socialLinks: ContactSocial[] = [
     label: "Gmail",
     platform: "email",
     href: siteContact.email ? `mailto:${siteContact.email}` : undefined,
+  },
+  {
+    label: "GitHub",
+    platform: "github",
+    href: siteContact.socials.github,
   },
   {
     label: "LinkedIn",
@@ -39,12 +44,12 @@ const socialLinks: ContactSocial[] = [
 function SocialItem({ label, platform, href }: ContactSocial) {
   const content = (
     <>
-      <SocialIcon platform={platform} className="size-4" />
-      <span className="text-[0.7rem] leading-4">{label}</span>
+      <SocialIcon platform={platform} className="size-6" />
+      <span className="text-xs leading-4">{label}</span>
     </>
   )
   const className =
-    "flex min-w-10 flex-col items-center justify-center gap-1 text-nav-muted transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
+    "flex min-h-14 min-w-14 flex-col items-center justify-center gap-1.5 rounded-lg text-nav-muted transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
 
   return (
     <li>
@@ -110,7 +115,7 @@ export function Contact() {
             </span>
           )}
 
-          <ul aria-label="Contact and social links" className="flex items-center gap-4 sm:gap-5">
+          <ul aria-label="Contact and social links" className="flex flex-wrap items-center gap-2 sm:gap-3">
             {socialLinks.map((link) => (
               <SocialItem key={link.label} {...link} />
             ))}

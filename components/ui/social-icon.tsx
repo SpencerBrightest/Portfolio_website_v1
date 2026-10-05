@@ -1,7 +1,7 @@
 import { Mail } from "lucide-react"
-import { siFacebook, siInstagram, siWhatsapp, siYoutube, siX } from "simple-icons"
+import { siFacebook, siGithub, siInstagram, siWhatsapp, siYoutube, siX } from "simple-icons"
 
-type SocialPlatform = "email" | "facebook" | "linkedin" | "instagram" | "youtube" | "x" | "whatsapp"
+type SocialPlatform = "email" | "github" | "facebook" | "linkedin" | "instagram" | "youtube" | "x" | "whatsapp"
 
 type SocialIconProps = {
   platform: SocialPlatform
@@ -35,7 +35,7 @@ export function SocialIcon({ platform, className = "size-4" }: SocialIconProps) 
   if (platform === "linkedin") {
     return (
       <span
-        className={`inline-flex size-4 items-center justify-center text-xs font-semibold leading-none ${className}`}
+        className={`inline-flex items-center justify-center text-sm font-semibold leading-none ${className}`}
         aria-hidden="true"
       >
         in
@@ -44,6 +44,7 @@ export function SocialIcon({ platform, className = "size-4" }: SocialIconProps) 
   }
 
   const brandPath = {
+    github: siGithub.path,
     facebook: siFacebook.path,
     instagram: siInstagram.path,
     youtube: siYoutube.path,

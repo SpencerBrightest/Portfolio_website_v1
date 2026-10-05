@@ -23,11 +23,11 @@ type PostCardProps = {
 export function PostCard({ post }: PostCardProps) {
   return (
     <article className="group overflow-hidden rounded-[14px] border border-nav-border bg-nav-panel transition-colors hover:border-nav-muted">
-      <div className="grid md:grid-cols-[minmax(16rem,0.9fr)_minmax(0,1.4fr)] md:items-stretch">
+      <div className="grid md:grid-cols-[minmax(13rem,0.8fr)_minmax(0,1.2fr)] md:items-stretch">
         <Link
           href={`/blog/${post.slug}`}
           aria-label={`Read ${post.title}`}
-          className="relative block aspect-[16/9] overflow-hidden bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-nav-foreground md:aspect-auto md:min-h-56"
+          className="relative block aspect-[16/9] overflow-hidden bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-nav-foreground md:aspect-auto md:min-h-44"
         >
           {post.image ? (
             <Image
@@ -42,7 +42,7 @@ export function PostCard({ post }: PostCardProps) {
           ) : null}
         </Link>
 
-        <div className="flex min-w-0 flex-col justify-center p-5 sm:p-6 md:p-7">
+        <div className="flex min-w-0 flex-col justify-center p-4 sm:p-5 md:p-6">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-[0.08em] text-nav-muted">
             <span className="inline-flex items-center gap-1.5">
               <CalendarDays className="size-3.5" aria-hidden="true" />
@@ -55,7 +55,7 @@ export function PostCard({ post }: PostCardProps) {
             </span>
           </div>
 
-          <Heading level={2} className="mt-3 text-xl font-semibold leading-snug">
+          <Heading level={2} className="mt-2.5 text-lg font-semibold leading-snug">
             <Link
               href={`/blog/${post.slug}`}
               className="rounded-sm text-nav-foreground transition-colors hover:text-nav-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground"
@@ -64,13 +64,13 @@ export function PostCard({ post }: PostCardProps) {
             </Link>
           </Heading>
 
-          <p className="mt-3 line-clamp-3 text-nav-muted">
+          <p className="mt-2.5 line-clamp-3 text-nav-muted">
             {post.description}
           </p>
 
           <Link
             href={`/blog/${post.slug}`}
-            className="mt-5 inline-flex min-h-11 w-fit items-center gap-2 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground dark:text-blue-400 dark:hover:text-blue-300"
+            className="mt-4 inline-flex min-h-10 w-fit items-center gap-2 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground dark:text-blue-400 dark:hover:text-blue-300"
           >
             Read article
             <ArrowRight className="size-4" aria-hidden="true" />

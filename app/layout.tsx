@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 
 import { Footer } from "@/components/layout/footer"
 import { Navbar } from "@/components/layout/navbar"
+import { WhatsAppFloat } from "@/components/contact/whatsapp-float"
 import { ThemeProvider } from "@/components/ui/theme-provider"
 import "./globals.css"
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Navbar />
           {children}
           <Footer />
+          <WhatsAppFloat />
         </ThemeProvider>
       </body>
     </html>

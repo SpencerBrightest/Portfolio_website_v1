@@ -71,7 +71,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between gap-2 nav:grid nav:grid-cols-[1fr_auto_1fr] nav:gap-4">
           <Link
             href="/"
-            className="inline-flex min-h-11 shrink-0 items-center rounded-lg text-[2rem] font-semibold tracking-[0.04em] text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
+            className="inline-flex min-h-11 shrink-0 items-center rounded-lg text-[2rem] font-semibold tracking-[-0.08em] text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
             aria-label="Spencer Bright home"
             aria-current={pathname === "/" ? "page" : undefined}
           >
@@ -88,6 +88,13 @@ export function Navbar() {
               aria-current={pathname === "/" ? "page" : undefined}
             >
               Home
+            </Link>
+            <Link
+              href="/about"
+              className={navLinkClass}
+              aria-current={isCurrentPath(pathname, "/about") ? "page" : undefined}
+            >
+              About
             </Link>
 
             <NavigationMenu
@@ -140,14 +147,6 @@ export function Navbar() {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-
-            <Link
-              href="/about"
-              className={navLinkClass}
-              aria-current={isCurrentPath(pathname, "/about") ? "page" : undefined}
-            >
-              About
-            </Link>
           </nav>
 
           <div className="hidden items-center justify-self-end nav:flex">
@@ -193,6 +192,14 @@ export function Navbar() {
               Home
             </Link>
             <Link
+              href="/about"
+              className={mobileLinkClass}
+              aria-current={isCurrentPath(pathname, "/about") ? "page" : undefined}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link
               href="/work"
               className={mobileLinkClass}
               aria-current={isCurrentPath(pathname, "/work") ? "page" : undefined}
@@ -207,14 +214,6 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Blog
-            </Link>
-            <Link
-              href="/about"
-              className={mobileLinkClass}
-              aria-current={isCurrentPath(pathname, "/about") ? "page" : undefined}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              About
             </Link>
           </nav>
         </div>
