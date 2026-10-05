@@ -15,7 +15,7 @@ export function Hero() {
       <HeroGrid />
       <div className="relative z-10 w-full">
         <Container>
-          <div className="grid items-start gap-3 sm:gap-6 nav:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] nav:gap-12">
+          <div className="grid items-start gap-3 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-8 nav:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] nav:gap-12 md:max-xl:gap-8">
             <div className="max-w-2xl">
               <p className="mb-3 inline-flex min-h-8 items-center gap-2 rounded-full border border-nav-border px-3 text-xs text-nav-muted nav:mb-6">
                 <span className="size-2 rounded-full bg-status" aria-hidden="true" />
@@ -28,7 +28,7 @@ export function Hero() {
 
               <Heading
                 id="hero-heading"
-                className="text-[clamp(2.25rem,10vw,3rem)] leading-[1.03] sm:text-6xl nav:text-6xl xl:text-7xl"
+                className="text-[clamp(2.25rem,10vw,3rem)] leading-[1.03] sm:text-6xl md:text-[clamp(2.5rem,5.5vw,3.75rem)] xl:text-7xl"
               >
                 Spencer Bright
               </Heading>
@@ -59,7 +59,7 @@ export function Hero() {
             <div
               role="img"
               aria-label="Portrait upload placeholder"
-              className="ml-auto aspect-square w-full max-w-[22rem] rounded-3xl border border-nav-border bg-nav-panel p-3 nav:mt-3 nav:max-w-[25rem]"
+              className="mx-auto aspect-square w-full max-w-[22rem] rounded-3xl border border-nav-border bg-nav-panel p-3 md:ml-auto md:mx-0 md:mt-3 md:max-xl:mt-0 nav:max-w-[25rem]"
             >
               <div
                 aria-hidden="true"

@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero/hero"
+import { SelectedWork } from "@/components/projects/selected-work"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
 
@@ -6,6 +7,7 @@ export default function Home() {
   return (
     <main className="flex-1">
       <Hero />
+      <SelectedWork />
 
       <section
         id="contact"
