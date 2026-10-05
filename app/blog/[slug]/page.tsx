@@ -1,18 +1,20 @@
+// Blog article route; add MDX components in components/blog/mdx-components.tsx and MDX files in content/blog.
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
 
+import { mdxComponents } from "@/components/blog/mdx-components"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
-import { getAllBlogPosts, getBlogPostBySlug } from "@/lib/blog"
+import { getBlogPostBySlug, getVisibleBlogPosts } from "@/lib/blog"
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllBlogPosts()
+  const posts = await getVisibleBlogPosts()
   return posts.map((post) => ({ slug: post.slug }))
 }
 
@@ -20,11 +22,29 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const { slug } = await params
   const post = await getBlogPostBySlug(slug)
 
-  if (!post) return { title: "Post not found" }
+  if (!post || (process.env.NODE_ENV === "production" && post.isDraft)) {
+    return {
+      title: "Post not found",
+      robots: { index: false, follow: false },
+    }
+  }
+
+  const description = post.description.includes("Spencer Bright")
+    ? post.description
+    : `${post.description} By Spencer Bright.`
+  const title = `${post.title}${post.isDraft ? " (Draft)" : ""} | Spencer Bright`
 
   return {
-    title: `${post.title}${post.isDraft ? " (Draft)" : ""} | Spencer Bright`,
-    description: post.description,
+    title,
+    description,
+    robots: post.isDraft ? { index: false, follow: false } : undefined,
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      ...(post.publishedAt ? { publishedTime: post.publishedAt } : {}),
+      authors: ["Spencer Bright"],
+    },
   }
 }
 
@@ -32,24 +52,38 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = await getBlogPostBySlug(slug)
 
-  if (!post) notFound()
+  if (!post || (process.env.NODE_ENV === "production" && post.isDraft)) {
+    notFound()
+  }
+
+  const metadata = [
+    post.category,
+    post.readTime ?? (post.readingTime ? `${post.readingTime} min read` : undefined),
+  ]
+    .filter((value): value is string => Boolean(value))
+    .join(" · ")
 
   return (
     <main className="flex-1 py-16 sm:py-24">
       <Container>
-        <article className="mx-auto max-w-3xl">
-          <LinkBack />
+        <article className="mx-auto max-w-2xl">
+          <Link
+            href="/blog"
+            className="mb-8 inline-flex min-h-11 items-center rounded-sm text-sm text-nav-muted transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
+          >
+            ← Back to blog
+          </Link>
           <header className="mb-10 border-b border-nav-border pb-8">
-            <p className="mb-4 font-mono text-xs uppercase tracking-[0.14em] text-nav-muted">
-              {post.isDraft ? "Draft · In progress" : "Writing"}
-            </p>
+            {metadata ? (
+              <p className="mb-4 font-mono text-xs text-nav-muted">{metadata}</p>
+            ) : null}
             <Heading>{post.title}</Heading>
             {post.description ? (
               <p className="mt-5 max-w-2xl text-lg leading-8 text-nav-muted">
                 {post.description}
               </p>
             ) : null}
-            {post.publishedAt && !post.isDraft ? (
+            {post.publishedAt ? (
               <time
                 className="mt-5 block font-mono text-xs text-nav-muted"
                 dateTime={post.publishedAt}
@@ -58,33 +92,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
+                  timeZone: "UTC",
                 })}
               </time>
             ) : null}
           </header>
 
           {post.body ? (
-            <div className="prose max-w-none text-base leading-7 text-nav-foreground [&_a]:text-nav-foreground [&_a]:underline [&_h2]:mb-3 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-medium [&_h3]:mb-2 [&_h3]:mt-8 [&_h3]:text-xl [&_h3]:font-medium [&_p]:mb-5 [&_ul]:mb-5 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:mb-5 [&_ol]:list-decimal [&_ol]:pl-6 [&_blockquote]:border-l [&_blockquote]:border-nav-border [&_blockquote]:pl-5 [&_blockquote]:text-nav-muted [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-nav-border [&_pre]:p-4">
-              <MDXRemote source={post.body} />
+            <div className="space-y-6">
+              <MDXRemote source={post.body} components={mdxComponents} />
             </div>
           ) : (
-            <p className="rounded-[14px] border border-nav-border p-5 text-nav-muted sm:p-6">
+            <p className="rounded-xl border border-nav-border p-6 text-nav-muted">
               This post is a draft and doesn’t have content yet.
             </p>
           )}
         </article>
       </Container>
     </main>
-  )
-}
-
-function LinkBack() {
-  return (
-    <Link
-      href="/blog"
-      className="mb-8 inline-flex min-h-11 items-center rounded-lg text-sm text-nav-muted transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
-    >
-      ← All posts
-    </Link>
   )
 }

@@ -1,3 +1,4 @@
+// Server-side blog content loader; add posts by placing a categorized MDX file in content/blog.
 import { readdir, readFile } from "node:fs/promises"
 import path from "node:path"
 
@@ -6,10 +7,22 @@ import matter from "gray-matter"
 const blogDirectory = path.join(process.cwd(), "content", "blog")
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
+// Add new categories here so frontmatter is validated against the same list.
+export const BLOG_CATEGORIES = ["About"] as const
+export type BlogCategory = (typeof BLOG_CATEGORIES)[number]
+
+export type BlogImage = {
+  src: string
+  alt: string
+}
+
 type Frontmatter = {
   title?: unknown
   description?: unknown
   date?: unknown
+  category?: unknown
+  readTime?: unknown
+  image?: unknown
   draft?: unknown
 }
 
@@ -18,6 +31,9 @@ export type BlogPostSummary = {
   title: string
   description: string
   publishedAt?: string
+  category?: BlogCategory
+  readTime?: string
+  image?: BlogImage
   readingTime?: number
   isDraft: boolean
   hasContent: boolean
@@ -50,11 +66,29 @@ function getExcerpt(body: string) {
     .slice(0, 180)
 }
 
+function parseCategory(value: unknown): BlogCategory | undefined {
+  return BLOG_CATEGORIES.find((category) => category === value)
+}
+
+function parseImage(value: unknown): BlogImage | undefined {
+  if (typeof value !== "object" || value === null) return undefined
+
+  const image = value as Record<string, unknown>
+  if (typeof image.src !== "string" || typeof image.alt !== "string") {
+    return undefined
+  }
+
+  const src = image.src.trim()
+  const alt = image.alt.trim()
+  return src && alt ? { src, alt } : undefined
+}
+
 function toPost(slug: string, rawContent: string): BlogPost {
   const { content, data } = matter(rawContent)
   const frontmatter = data as Frontmatter
   const body = content.trim()
-  const isDraft = frontmatter.draft === true || body.length === 0
+  const containsPlaceholder = /\bTODO\s*\(my words\):/i.test(body)
+  const isDraft = frontmatter.draft === true || body.length === 0 || containsPlaceholder
   const title =
     typeof frontmatter.title === "string" && frontmatter.title.trim()
       ? frontmatter.title.trim()
@@ -64,6 +98,10 @@ function toPost(slug: string, rawContent: string): BlogPost {
       ? frontmatter.description.trim()
       : getExcerpt(body)
   const wordCount = body ? body.split(/\s+/).length : 0
+  const readTime =
+    typeof frontmatter.readTime === "string" && frontmatter.readTime.trim()
+      ? frontmatter.readTime.trim()
+      : undefined
 
   return {
     slug,
@@ -71,6 +109,9 @@ function toPost(slug: string, rawContent: string): BlogPost {
     description:
       excerpt || (isDraft ? "This post is a draft and is still being written." : ""),
     publishedAt: safeDate(frontmatter.date),
+    category: parseCategory(frontmatter.category),
+    readTime,
+    image: parseImage(frontmatter.image),
     readingTime: wordCount > 0 ? Math.max(1, Math.ceil(wordCount / 200)) : undefined,
     isDraft,
     hasContent: body.length > 0,
@@ -106,6 +147,13 @@ export async function getAllBlogPosts(): Promise<BlogPostSummary[]> {
 export async function getPublishedBlogPosts(): Promise<BlogPostSummary[]> {
   const posts = await getAllBlogPosts()
   return posts.filter((post) => !post.isDraft)
+}
+
+export async function getVisibleBlogPosts(): Promise<BlogPostSummary[]> {
+  const posts = await getAllBlogPosts()
+  return process.env.NODE_ENV === "development"
+    ? posts.filter((post) => !post.isDraft || post.hasContent)
+    : posts.filter((post) => !post.isDraft)
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {

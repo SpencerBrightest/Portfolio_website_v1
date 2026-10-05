@@ -1,10 +1,11 @@
+// Blog index; new MDX files appear here in development, while production lists published posts only.
 import { PostCard } from "@/components/blog/post-card"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
-import { getAllBlogPosts } from "@/lib/blog"
+import { getVisibleBlogPosts } from "@/lib/blog"
 
 export default async function BlogPage() {
-  const posts = await getAllBlogPosts()
+  const posts = await getVisibleBlogPosts()
 
   return (
     <main className="flex-1 py-20 sm:py-28">
@@ -27,7 +28,7 @@ export default async function BlogPage() {
               ))}
             </ul>
           ) : (
-            <p className="mt-10 rounded-[14px] border border-nav-border p-5 text-nav-muted sm:p-6">
+            <p className="mt-10 rounded-xl border border-nav-border p-5 text-nav-muted sm:p-6">
               No posts yet. Check back soon.
             </p>
           )}
