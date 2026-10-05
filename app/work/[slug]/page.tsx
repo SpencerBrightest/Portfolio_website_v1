@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import { ProjectMedia } from "@/components/projects/project-media"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
+import { Reveal } from "@/components/ui/reveal"
 import { getProjectBySlug, projects } from "@/data/projects"
 
 type WorkPageProps = {
@@ -37,20 +38,25 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
     <main className="flex-1 py-6 sm:py-8">
       <Container>
         <article className="mx-auto max-w-4xl">
-          <Link
-            href="/#selected-work"
-            className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg text-sm text-nav-muted transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
-          >
-            <span aria-hidden="true">←</span>
-            Back to projects
-          </Link>
+          <Reveal>
+            <Link
+              href="/#selected-work"
+              className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg text-sm text-nav-muted transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
+            >
+              <span aria-hidden="true">←</span>
+              Back to projects
+            </Link>
+          </Reveal>
 
-          <ProjectMedia
-            project={project}
-            variant="detail"
-            className="mx-auto w-full max-w-lg border border-nav-border"
-          />
+          <Reveal>
+            <ProjectMedia
+              project={project}
+              variant="detail"
+              className="mx-auto w-full max-w-lg border border-nav-border"
+            />
+          </Reveal>
 
+          <Reveal>
           <header className="border-b border-nav-border py-6 sm:py-8">
             <p className="mb-4 font-mono text-xs uppercase tracking-[0.12em] text-nav-muted">
               {project.category}
@@ -62,7 +68,9 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
               {project.description}
             </p>
           </header>
+          </Reveal>
 
+          <Reveal>
           <div className="grid gap-8 py-6 sm:grid-cols-[minmax(0,1fr)_minmax(12rem,0.65fr)] sm:gap-12 sm:py-8">
             <section aria-labelledby="project-stack-heading">
               <h2
@@ -113,6 +121,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
               </div>
             </dl>
           </div>
+          </Reveal>
         </article>
       </Container>
     </main>
