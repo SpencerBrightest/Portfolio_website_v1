@@ -10,38 +10,38 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative isolate flex min-h-[calc(100svh-4.0625rem)] items-center overflow-hidden py-4 nav:py-6"
+      className="relative isolate flex min-h-[calc(100svh-4.0625rem)] items-start overflow-hidden py-3 nav:pb-6 nav:pt-8"
     >
       <HeroGrid />
       <div className="relative z-10 w-full">
         <Container>
-          <div className="grid items-start gap-4 sm:gap-6 nav:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] nav:gap-16">
+          <div className="grid items-start gap-3 sm:gap-6 nav:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] nav:gap-12">
             <div className="max-w-2xl">
-              <p className="mb-4 inline-flex min-h-8 items-center gap-2 rounded-full border border-nav-border px-3 text-xs text-nav-muted nav:mb-7">
+              <p className="mb-3 inline-flex min-h-8 items-center gap-2 rounded-full border border-nav-border px-3 text-xs text-nav-muted nav:mb-6">
                 <span className="size-2 rounded-full bg-status" aria-hidden="true" />
                 Available for new work
               </p>
 
-              <p className="mb-3 font-mono text-xs uppercase tracking-[0.14em] text-nav-muted nav:mb-4">
+              <p className="mb-2 font-mono text-[0.68rem] uppercase tracking-[0.08em] text-nav-muted sm:text-xs sm:tracking-[0.14em] nav:mb-3">
                 Developer · Builder · Creator
               </p>
 
               <Heading
                 id="hero-heading"
-                className="text-5xl leading-[1.03] sm:text-6xl nav:text-7xl"
+                className="text-[clamp(2.25rem,10vw,3rem)] leading-[1.03] sm:text-6xl nav:text-6xl xl:text-7xl"
               >
                 Spencer Bright
               </Heading>
 
-              <p className="mt-4 max-w-xl text-lg leading-8 text-nav-muted nav:mt-6">
+              <p className="mt-3 max-w-xl text-base leading-7 text-nav-muted sm:text-lg sm:leading-8 nav:mt-5">
                 Portfolio and writing are taking shape. Check back as I share what
                 I build and learn.
               </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-3 nav:mt-8">
+              <div className="mt-4 grid w-full grid-cols-2 items-center gap-2 sm:flex sm:w-fit sm:flex-wrap sm:gap-3 nav:mt-7">
                 <ButtonLink
                   href="/work"
-                  className="min-h-11 rounded-full px-6 text-[0.95rem] transition-transform hover:-translate-y-0.5 active:scale-[0.97]"
+                  className="min-h-10 rounded-full px-2 text-xs transition-transform hover:-translate-y-0.5 active:scale-[0.97] sm:min-h-11 sm:px-6 sm:text-[0.95rem]"
                 >
                   View my work
                   <ArrowRight className="size-4" aria-hidden="true" />
@@ -49,7 +49,7 @@ export function Hero() {
                 <ButtonLink
                   href="/#contact"
                   variant="outline"
-                  className="min-h-11 rounded-full border-nav-border bg-nav-background px-6 text-[0.95rem] text-nav-foreground hover:-translate-y-0.5 hover:bg-nav-hover hover:text-nav-foreground active:scale-[0.97]"
+                  className="min-h-10 rounded-full border-nav-border bg-nav-background px-2 text-xs text-nav-foreground hover:-translate-y-0.5 hover:bg-nav-hover hover:text-nav-foreground active:scale-[0.97] sm:min-h-11 sm:px-6 sm:text-[0.95rem]"
                 >
                   Get in touch
                 </ButtonLink>

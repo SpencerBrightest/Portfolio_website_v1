@@ -71,7 +71,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between gap-2 nav:grid nav:grid-cols-[1fr_auto_1fr] nav:gap-4">
           <Link
             href="/"
-            className="inline-flex min-h-11 shrink-0 items-center rounded-lg text-[0.95rem] font-semibold tracking-[0.04em] text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
+            className="inline-flex min-h-11 shrink-0 items-center rounded-lg text-[2rem] font-semibold tracking-[0.04em] text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
             aria-label="Spencer Bright home"
             aria-current={pathname === "/" ? "page" : undefined}
           >
