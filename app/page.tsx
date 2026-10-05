@@ -1,5 +1,7 @@
 import { Hero } from "@/components/hero/hero"
 import { SelectedWork } from "@/components/projects/selected-work"
+import { StackMarquee } from "@/components/stack/stack-marquee"
+import { Section } from "@/components/ui/section"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
 
@@ -8,6 +10,9 @@ export default function Home() {
     <main className="flex-1">
       <Hero />
       <SelectedWork />
+      <Section id="tools" eyebrow="Stack" title="Tools I work with">
+        <StackMarquee />
+      </Section>
 
       <section
         id="contact"
