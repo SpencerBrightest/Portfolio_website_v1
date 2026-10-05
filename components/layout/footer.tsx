@@ -4,7 +4,7 @@ import { CurrentYear } from "@/components/layout/current-year"
 import { GitHubStars } from "@/components/layout/github-stars"
 import { ButtonLink } from "@/components/ui/button-link"
 import { Container } from "@/components/ui/container"
-import { stack } from "@/data/stack"
+import { footerStack } from "@/data/stack"
 
 const repositoryUrl = "https://github.com/SpencerBrightest/Portfolio_website_v1"
 
@@ -38,7 +38,7 @@ export function Footer() {
               aria-label="Technology stack"
               className="flex flex-wrap items-center gap-x-4 gap-y-2"
             >
-              {stack.map(({ label, iconPath }) => (
+              {footerStack.map(({ label, iconPath }) => (
                 <li
                   key={label}
                   className="inline-flex items-center gap-1.5 whitespace-nowrap"
