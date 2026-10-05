@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ui/button-link"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
 import { HeroGrid } from "@/components/hero/hero-grid"
+import { HeroProfileCard } from "@/components/hero/hero-profile-card"
 
 export function Hero() {
   return (
@@ -34,8 +35,10 @@ export function Hero() {
               </Heading>
 
               <p className="mt-3 max-w-xl text-nav-muted nav:mt-5">
-                Portfolio and writing are taking shape. Check back as I share what
-                I build and learn.
+                I build web and mobile products. I&apos;m learning how systems work so I can protect
+                them. Fourth-year Computer Engineering student at The University of Bamenda. Today I
+                build software to understand how it works. Tomorrow I&apos;ll use that to keep systems
+                secure. Open to opportunities.
               </p>
 
               <div className="mt-4 grid w-full grid-cols-2 items-center gap-2 sm:flex sm:w-fit sm:flex-wrap sm:gap-3 nav:mt-7">
@@ -56,15 +59,18 @@ export function Hero() {
               </div>
             </div>
 
-            <div
-              role="img"
-              aria-label="Portrait upload placeholder"
-              className="mx-auto aspect-square w-full max-w-[22rem] rounded-3xl border border-nav-border bg-nav-panel p-3 md:ml-auto md:mx-0 md:mt-3 md:max-xl:mt-0 nav:max-w-[25rem]"
-            >
+            <div className="mx-auto w-full max-w-[22rem] md:ml-auto md:mx-0 nav:max-w-[25rem]">
               <div
-                aria-hidden="true"
-                className="size-full rounded-2xl border border-nav-border bg-nav-background"
-              />
+                role="img"
+                aria-label="Portrait upload placeholder"
+                className="aspect-square rounded-3xl border border-nav-border bg-nav-panel p-3 md:mt-3 md:max-xl:mt-0"
+              >
+                <div
+                  aria-hidden="true"
+                  className="size-full rounded-2xl border border-nav-border bg-nav-background"
+                />
+              </div>
+              <HeroProfileCard />
             </div>
           </div>
         </Container>

@@ -11,14 +11,16 @@ const repositoryUrl = "https://github.com/SpencerBrightest/Portfolio_website_v1"
 type BrandIconProps = {
   path: string
   className?: string
+  color?: string
 }
 
-function BrandIcon({ path, className }: BrandIconProps) {
+function BrandIcon({ path, className, color }: BrandIconProps) {
   return (
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
       className={className}
+      style={color ? { color } : undefined}
       fill="currentColor"
       focusable="false"
     >
@@ -38,12 +40,12 @@ export function Footer() {
               aria-label="Technology stack"
               className="flex flex-wrap items-center gap-x-4 gap-y-2"
             >
-              {footerStack.map(({ label, iconPath }) => (
+              {footerStack.map(({ label, iconPath, iconColor }) => (
                 <li
                   key={label}
                   className="inline-flex items-center gap-1.5 whitespace-nowrap"
                 >
-                  <BrandIcon path={iconPath} className="size-4" />
+                  <BrandIcon path={iconPath} className="size-5" color={iconColor} />
                   <span>{label}</span>
                 </li>
               ))}

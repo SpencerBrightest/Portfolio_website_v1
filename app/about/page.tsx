@@ -1,5 +1,8 @@
 import Link from "next/link"
 
+import { InspirationSection } from "@/components/about/inspiration-section"
+import { RecentWriting } from "@/components/about/recent-writing"
+import { UsageSection } from "@/components/about/usage-section"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
 
@@ -56,6 +59,9 @@ export default function AboutPage() {
           </div>
         </article>
       </Container>
+      <RecentWriting />
+      <UsageSection />
+      <InspirationSection />
     </main>
   )
 }

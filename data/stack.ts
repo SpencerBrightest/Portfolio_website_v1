@@ -52,9 +52,21 @@ export const stack = [
 
 // Keep the footer's compact technology list unchanged as the marquee gets its expanded tool list.
 export const footerStack = [
-  { label: "Next.js", iconPath: stackIconPaths.siNextdotjs },
-  { label: "React", iconPath: stackIconPaths.siReact },
-  { label: "TypeScript", iconPath: stackIconPaths.siTypescript },
-  { label: "Tailwind CSS", iconPath: stackIconPaths.siTailwindcss },
-  { label: "shadcn/ui", iconPath: siShadcnui.path },
+  {
+    label: "Next.js",
+    iconPath: stackIconPaths.siNextdotjs,
+    iconColor: "var(--nav-foreground)",
+  },
+  { label: "React", iconPath: stackIconPaths.siReact, iconColor: `#${siReact.hex}` },
+  {
+    label: "TypeScript",
+    iconPath: stackIconPaths.siTypescript,
+    iconColor: `#${siTypescript.hex}`,
+  },
+  {
+    label: "Tailwind CSS",
+    iconPath: stackIconPaths.siTailwindcss,
+    iconColor: `#${siTailwindcss.hex}`,
+  },
+  { label: "shadcn/ui", iconPath: siShadcnui.path, iconColor: "var(--nav-foreground)" },
 ] as const
