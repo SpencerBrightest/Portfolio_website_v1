@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
 import { HeroGrid } from "@/components/hero/hero-grid"
 import { HeroProfileCard } from "@/components/hero/hero-profile-card"
+import { Reveal } from "@/components/ui/reveal"
 
 export function Hero() {
   return (
@@ -17,7 +18,7 @@ export function Hero() {
       <div className="relative z-10 w-full">
         <Container>
           <div className="grid items-start gap-3 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-8 nav:grid-cols-[minmax(0,1.28fr)_minmax(0,0.72fr)] nav:gap-12 md:max-xl:gap-8">
-            <div className="max-w-2xl">
+            <Reveal className="max-w-2xl">
               <p className="mb-3 inline-flex min-h-8 items-center gap-2 rounded-full border border-nav-border px-3 text-[0.8125rem] text-nav-muted nav:mb-6">
                 <span className="size-2 rounded-full bg-status" aria-hidden="true" />
                 Available for new work
@@ -57,9 +58,9 @@ export function Hero() {
                   Get in touch
                 </ButtonLink>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="mx-auto w-full max-w-[22rem] md:ml-auto md:mx-0 nav:max-w-[25rem]">
+            <Reveal className="mx-auto w-full max-w-[22rem] md:ml-auto md:mx-0 nav:max-w-[25rem]">
               <div
                 role="img"
                 aria-label="Portrait upload placeholder"
@@ -71,7 +72,7 @@ export function Hero() {
                 />
               </div>
               <HeroProfileCard />
-            </div>
+            </Reveal>
           </div>
         </Container>
       </div>
