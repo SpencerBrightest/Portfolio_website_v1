@@ -15,20 +15,20 @@ export function Hero() {
       <HeroGrid />
       <div className="relative z-10 w-full">
         <Container>
-          <div className="grid items-start gap-3 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-8 nav:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] nav:gap-12 md:max-xl:gap-8">
+          <div className="grid items-start gap-3 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-8 nav:grid-cols-[minmax(0,1.28fr)_minmax(0,0.72fr)] nav:gap-12 md:max-xl:gap-8">
             <div className="max-w-2xl">
-              <p className="mb-3 inline-flex min-h-8 items-center gap-2 rounded-full border border-nav-border px-3 text-xs text-nav-muted nav:mb-6">
+              <p className="mb-3 inline-flex min-h-8 items-center gap-2 rounded-full border border-nav-border px-3 text-[0.8125rem] text-nav-muted nav:mb-6">
                 <span className="size-2 rounded-full bg-status" aria-hidden="true" />
                 Available for new work
               </p>
 
-              <p className="mb-2 font-mono text-[0.68rem] uppercase tracking-[0.08em] text-nav-muted sm:text-xs sm:tracking-[0.14em] nav:mb-3">
+              <p className="mb-2 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-nav-muted sm:text-xs sm:tracking-[0.14em] nav:mb-3">
                 Developer · Builder · Creator
               </p>
 
               <Heading
                 id="hero-heading"
-                className="text-[clamp(2.25rem,10vw,3rem)] leading-[1.03] sm:text-6xl md:text-[clamp(2.5rem,5.5vw,3.75rem)] xl:text-7xl"
+                className="text-[clamp(2.6rem,10vw,3rem)] leading-[1.03] sm:text-6xl md:text-[clamp(2.75rem,5.8vw,4.25rem)] xl:text-[5.5rem]"
               >
                 Spencer Bright
               </Heading>

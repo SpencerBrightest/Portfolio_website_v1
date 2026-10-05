@@ -101,9 +101,9 @@
   --nav-panel: #FFFFFF;
   --nav-hover: #EDEDEA;
   --nav-foreground: #111111;
-  --nav-muted: #5F5F5A;
+  --nav-muted: #555550;
   --nav-border: #E2E2DE;
-  --grid-line: rgba(0, 0, 0, 0.14);
+  --grid-line: rgba(0, 0, 0, 0.18);
   --scroll-track: transparent;
   --scroll-thumb: #262624;
   --scroll-thumb-hover: #111111;
