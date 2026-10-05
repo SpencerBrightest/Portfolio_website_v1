@@ -3,6 +3,7 @@ import type { ComponentProps, ReactNode } from "react"
 import type { MDXRemoteProps } from "next-mdx-remote/rsc"
 
 import { Heading } from "@/components/ui/heading"
+import { Reveal } from "@/components/ui/reveal"
 
 type BlockProps = {
   title: string
@@ -22,17 +23,21 @@ export function Block({ title, children }: BlockProps) {
 
 function ArticleH2({ children, ...props }: ComponentProps<"h2">) {
   return (
-    <Heading level={2} className="mt-10 text-2xl leading-tight" {...props}>
-      {children}
-    </Heading>
+    <Reveal>
+      <Heading level={2} className="mt-10 text-2xl leading-tight" {...props}>
+        {children}
+      </Heading>
+    </Reveal>
   )
 }
 
 function ArticleH3({ children, ...props }: ComponentProps<"h3">) {
   return (
-    <Heading level={3} className="mt-7 text-xl leading-snug" {...props}>
-      {children}
-    </Heading>
+    <Reveal>
+      <Heading level={3} className="mt-7 text-xl leading-snug" {...props}>
+        {children}
+      </Heading>
+    </Reveal>
   )
 }
 
@@ -49,22 +54,35 @@ function ArticleLink({ children, ...props }: ComponentProps<"a">) {
 
 function ArticleList({ children, ...props }: ComponentProps<"ul">) {
   return (
-    <ul className="list-disc space-y-2 pl-6" {...props}>
-      {children}
-    </ul>
+    <Reveal>
+      <ul className="list-disc space-y-2 pl-6" {...props}>
+        {children}
+      </ul>
+    </Reveal>
   )
 }
 
 function ArticleOrderedList({ children, ...props }: ComponentProps<"ol">) {
   return (
-    <ol className="list-decimal space-y-2 pl-6" {...props}>
-      {children}
-    </ol>
+    <Reveal>
+      <ol className="list-decimal space-y-2 pl-6" {...props}>
+        {children}
+      </ol>
+    </Reveal>
+  )
+}
+
+function ArticleParagraph({ children, ...props }: ComponentProps<"p">) {
+  return (
+    <Reveal>
+      <p {...props}>{children}</p>
+    </Reveal>
   )
 }
 
 export const mdxComponents: NonNullable<MDXRemoteProps["components"]> = {
   Block,
+  p: ArticleParagraph,
   h2: ArticleH2,
   h3: ArticleH3,
   a: ArticleLink,

@@ -11,6 +11,7 @@ import { FollowLinks } from "@/components/blog/follow-links"
 import { mdxComponents } from "@/components/blog/mdx-components"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
+import { Reveal } from "@/components/ui/reveal"
 import { getBlogPostBySlug, getPublishedBlogPosts, getVisibleBlogPosts } from "@/lib/blog"
 
 type BlogPostPageProps = {
@@ -91,16 +92,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <main className="flex-1 py-10 sm:py-16">
       <Container>
-        <Link
-          href="/blog"
-          className="mb-7 inline-flex min-h-11 items-center rounded-sm text-sm text-nav-muted transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
-        >
-          ← Back to blog
-        </Link>
+        <Reveal>
+          <Link
+            href="/blog"
+            className="mb-7 inline-flex min-h-11 items-center rounded-sm text-sm text-nav-muted transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
+          >
+            ← Back to blog
+          </Link>
+        </Reveal>
 
         <article aria-labelledby="article-heading">
           <div className="grid gap-x-12 gap-y-8 nav:grid-cols-[minmax(0,1fr)_15rem] nav:gap-x-10">
-            <header className="min-w-0 nav:col-start-1 nav:row-start-1">
+            <Reveal className="min-w-0 nav:col-start-1 nav:row-start-1">
+            <header className="min-w-0">
               {metadata ? (
                 <p className="mb-4 font-mono text-xs uppercase tracking-[0.08em] text-nav-muted">
                   {metadata}
@@ -113,9 +117,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <p className="mt-5 max-w-3xl text-nav-muted">{post.description}</p>
               ) : null}
             </header>
+            </Reveal>
 
             {post.image ? (
-              <div className="overflow-hidden rounded-[14px] bg-nav-hover nav:col-start-1 nav:row-start-2">
+              <Reveal className="nav:col-start-1 nav:row-start-2">
+              <div className="overflow-hidden rounded-[14px] bg-nav-hover">
                 <Image
                   src={post.image.src}
                   alt={post.image.alt}
@@ -126,16 +132,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   className="h-auto max-h-[34rem] w-full object-cover"
                 />
               </div>
+              </Reveal>
             ) : null}
 
-            <div className="border-t border-nav-border pt-6 nav:col-start-2 nav:row-start-1 nav:row-span-3 nav:mt-0 nav:border-t-0 nav:pt-0">
+            <Reveal className="border-t border-nav-border pt-6 nav:col-start-2 nav:row-start-1 nav:row-span-3 nav:mt-0 nav:border-t-0 nav:pt-0">
               <ArticleSidebar
                 title={post.title}
                 url={articleUrl}
                 tags={post.tags ?? []}
                 featuredPosts={featuredPosts}
               />
-            </div>
+            </Reveal>
 
             <div className="nav:col-start-1 nav:row-start-3">
               {post.body ? (
@@ -143,11 +150,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <MDXRemote source={post.body} components={mdxComponents} />
                 </div>
               ) : (
-                <p className="rounded-xl border border-nav-border p-6 text-nav-muted">
-                  This post is a draft and doesn’t have content yet.
-                </p>
+                <Reveal>
+                  <p className="rounded-xl border border-nav-border p-6 text-nav-muted">
+                    This post is a draft and doesn’t have content yet.
+                  </p>
+                </Reveal>
               )}
-              <FollowLinks />
+              <Reveal>
+                <FollowLinks />
+              </Reveal>
             </div>
           </div>
         </article>
