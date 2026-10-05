@@ -1,16 +1,19 @@
 import Link from "next/link"
 
 import { InspirationSection } from "@/components/about/inspiration-section"
+import { PortfolioShowcase } from "@/components/about/portfolio-showcase"
 import { RecentWriting } from "@/components/about/recent-writing"
 import { UsageSection } from "@/components/about/usage-section"
 import { Container } from "@/components/ui/container"
+import { Reveal } from "@/components/ui/reveal"
 import { Heading } from "@/components/ui/heading"
 
 export default function AboutPage() {
   return (
-    <main className="flex-1 bg-nav-background text-about-heading">
+    <main className="flex-1 bg-nav-background pb-32 text-about-heading sm:pb-40">
       <Container className="py-14 sm:py-20">
         <article className="mx-auto w-full max-w-[46.875rem]" aria-labelledby="about-heading">
+          <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.16em] text-about-text">
             HI, I&apos;M SPENCER
           </p>
@@ -18,7 +21,7 @@ export default function AboutPage() {
             id="about-heading"
             className="mt-4 font-about-display text-[clamp(2.4rem,7vw,3.2rem)] leading-[1.15] font-bold tracking-[-0.03em] text-about-heading"
           >
-            About Me
+            About <span className="text-about-accent">Me</span>
           </Heading>
 
           <div className="mt-8 space-y-6 text-about-text sm:mt-10 sm:space-y-7">
@@ -57,10 +60,12 @@ export default function AboutPage() {
               to build something secure and impactful together!
             </p>
           </div>
+          </Reveal>
         </article>
       </Container>
       <RecentWriting />
       <UsageSection />
+      <PortfolioShowcase />
       <InspirationSection />
     </main>
   )
