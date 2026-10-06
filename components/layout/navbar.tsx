@@ -75,7 +75,7 @@ export function Navbar() {
             aria-label="Spencer Bright home"
             aria-current={pathname === "/" ? "page" : undefined}
           >
-            $B
+             $<span className="text-about-accent">B</span> 
           </Link>
 
           <nav

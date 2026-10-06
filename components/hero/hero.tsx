@@ -32,7 +32,7 @@ export function Hero() {
                 id="hero-heading"
                 className="text-[clamp(2.6rem,10vw,3rem)] leading-[1.03] sm:text-6xl md:text-[clamp(2.75rem,5.8vw,4.25rem)] xl:text-[5.5rem]"
               >
-                Spencer Bright
+                Spencer <span className="text-about-accent"> Bright</span>
               </Heading>
 
               <p className="mt-3 max-w-xl text-nav-muted nav:mt-5">

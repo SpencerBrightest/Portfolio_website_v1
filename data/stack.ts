@@ -1,4 +1,7 @@
 import {
+  siHtml5,
+  siCss,
+  siJavascript,
   siFirebase,
   siFigma,
   siFlutter,
@@ -14,6 +17,9 @@ import {
 
 // Central tool list for the marquee and footer; add a named Simple Icons export and colors here.
 export const stackIconPaths = {
+  siHtml5: siHtml5.path,
+  siCss: siCss.path,
+  siJavascript: siJavascript.path,
   siNextdotjs: siNextdotjs.path,
   siReact: siReact.path,
   siTypescript: siTypescript.path,
@@ -38,6 +44,9 @@ export type StackTool = {
 
 // Add a tool here with its official icon key and checked light/dark hover colors.
 export const stack = [
+  { name: "HTML5", icon: "siHtml5", hoverDark: `#${siHtml5.hex}`, hoverLight: `#${siHtml5.hex}` },
+  { name: "CSS", icon: "siCss", hoverDark: `#${siCss.hex}`, hoverLight: `#${siCss.hex}` },
+  { name: "JavaScript", icon: "siJavascript", hoverDark: `#${siJavascript.hex}`, hoverLight: `#${siJavascript.hex}` },
   { name: "Next.js", icon: "siNextdotjs", hoverDark: "fg", hoverLight: "fg" },
   { name: "React", icon: "siReact", hoverDark: "#61DAFB", hoverLight: "#0E8FB3" },
   { name: "TypeScript", icon: "siTypescript", hoverDark: "#3178C6", hoverLight: "#3178C6" },
