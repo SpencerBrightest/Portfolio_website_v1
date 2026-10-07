@@ -23,6 +23,7 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }))
 }
 
+// Generates dynamic SEO metadata including OG, Twitter, and canonical for an article.
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
   const post = await getBlogPostBySlug(slug)
@@ -42,17 +43,28 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return {
     title,
     description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     robots: post.isDraft ? { index: false, follow: false } : undefined,
     openGraph: {
       type: "article",
+      url: `/blog/${slug}`,
       title,
       description,
       ...(post.publishedAt ? { publishedTime: post.publishedAt } : {}),
       authors: ["Spencer Bright"],
       ...(post.image ? { images: [post.image.src] } : {}),
     },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      ...(post.image ? { images: [post.image.src] } : {}),
+    },
   }
 }
+
 
 function formatDate(date?: string) {
   if (!date) return undefined
