@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
-import { ArrowUpRight, Menu, X } from "lucide-react"
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react"
 
 import { Container } from "@/components/ui/container"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
@@ -16,6 +16,8 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
+import type { Project } from "@/data/projects"
+import type { BlogPostSummary } from "@/lib/blog"
 
 const navLinkClass =
   "inline-flex min-h-10 items-center justify-center rounded-lg px-3 py-[0.45rem] text-[0.9rem] font-normal text-nav-muted transition-colors hover:bg-nav-hover hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground aria-[current=page]:bg-nav-hover aria-[current=page]:text-nav-foreground"
@@ -23,14 +25,27 @@ const navLinkClass =
 const mobileLinkClass =
   "flex min-h-11 w-full items-center rounded-lg px-3 py-2 text-base text-nav-muted transition-colors hover:bg-nav-hover hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground aria-[current=page]:bg-nav-hover aria-[current=page]:text-nav-foreground"
 
+const submenuLinkClass =
+  "group/link flex flex-col gap-1 rounded-lg px-3 py-2.5 text-sm text-nav-foreground hover:bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground"
+
 function isCurrentPath(pathname: string, target: string) {
   if (target === "/") return pathname === "/"
   return pathname === target || pathname.startsWith(`${target}/`)
 }
 
-export function Navbar() {
+type NavbarProject = Pick<Project, "slug" | "title" | "category">
+type NavbarPost = Pick<BlogPostSummary, "slug" | "title" | "category">
+
+type NavbarProps = {
+  projects: NavbarProject[]
+  latestPosts: NavbarPost[]
+}
+
+export function Navbar({ projects, latestPosts }: NavbarProps) {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileWorkOpen, setMobileWorkOpen] = useState(false)
+  const [mobileBlogOpen, setMobileBlogOpen] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const headerRef = useRef<HTMLElement>(null)
 
@@ -62,6 +77,12 @@ export function Navbar() {
     }
   }, [mobileMenuOpen])
 
+  function closeMobileMenu() {
+    setMobileMenuOpen(false)
+    setMobileWorkOpen(false)
+    setMobileBlogOpen(false)
+  }
+
   return (
     <header
       ref={headerRef}
@@ -75,7 +96,7 @@ export function Navbar() {
             aria-label="Spencer Bright home"
             aria-current={pathname === "/" ? "page" : undefined}
           >
-             $<span className="text-about-accent">B</span> 
+            $<span className="text-about-accent">B</span>
           </Link>
 
           <nav
@@ -107,11 +128,22 @@ export function Navbar() {
                     Work
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="p-2 transition-[opacity,transform,translate] duration-150 data-ending-style:translate-y-1 data-ending-style:opacity-0 data-starting-style:translate-y-1 data-starting-style:opacity-0 data-[motion^=from-]:animate-none data-[motion^=to-]:animate-none motion-reduce:transition-none">
-                    <ul className="w-[17rem] max-w-[calc(100vw-3rem)]">
-                      <li>
+                    <ul className="w-[19rem] max-w-[calc(100vw-3rem)]">
+                      {projects.map((project) => (
+                        <li key={project.slug}>
+                          <NavigationMenuLink
+                            render={<Link href={`/work/${project.slug}`} />}
+                            className={submenuLinkClass}
+                          >
+                            <span className="font-medium">{project.title}</span>
+                            <span className="text-xs text-nav-muted">{project.category}</span>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                      <li className="mt-1 border-t border-nav-border pt-1">
                         <NavigationMenuLink
                           render={<Link href="/work" />}
-                          className="group/link flex items-center justify-between rounded-lg px-3 py-3 text-sm text-nav-foreground hover:bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground"
+                          className="group/link flex items-center justify-between rounded-lg px-3 py-2.5 text-sm text-nav-foreground hover:bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground"
                         >
                           <span className="font-medium">All work</span>
                           <ArrowUpRight
@@ -129,11 +161,24 @@ export function Navbar() {
                     Blog
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="p-2 transition-[opacity,transform,translate] duration-150 data-ending-style:translate-y-1 data-ending-style:opacity-0 data-starting-style:translate-y-1 data-starting-style:opacity-0 data-[motion^=from-]:animate-none data-[motion^=to-]:animate-none motion-reduce:transition-none">
-                    <ul className="w-[17rem] max-w-[calc(100vw-3rem)]">
-                      <li>
+                    <ul className="w-[19rem] max-w-[calc(100vw-3rem)]">
+                      {latestPosts.map((post) => (
+                        <li key={post.slug}>
+                          <NavigationMenuLink
+                            render={<Link href={`/blog/${post.slug}`} />}
+                            className={submenuLinkClass}
+                          >
+                            <span className="font-medium">{post.title}</span>
+                            <span className="text-xs text-nav-muted">
+                              {post.category ?? "Article"}
+                            </span>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                      <li className="mt-1 border-t border-nav-border pt-1">
                         <NavigationMenuLink
                           render={<Link href="/blog" />}
-                          className="group/link flex items-center justify-between rounded-lg px-3 py-3 text-sm text-nav-foreground hover:bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground"
+                          className="group/link flex items-center justify-between rounded-lg px-3 py-2.5 text-sm text-nav-foreground hover:bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground"
                         >
                           <span className="font-medium">All posts</span>
                           <ArrowUpRight
@@ -187,7 +232,7 @@ export function Navbar() {
               href="/"
               className={mobileLinkClass}
               aria-current={pathname === "/" ? "page" : undefined}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
             >
               Home
             </Link>
@@ -195,26 +240,82 @@ export function Navbar() {
               href="/about"
               className={mobileLinkClass}
               aria-current={isCurrentPath(pathname, "/about") ? "page" : undefined}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
             >
               About
             </Link>
-            <Link
-              href="/work"
-              className={mobileLinkClass}
-              aria-current={isCurrentPath(pathname, "/work") ? "page" : undefined}
-              onClick={() => setMobileMenuOpen(false)}
+
+            <Button
+              type="button"
+              variant="ghost"
+              className={`${mobileLinkClass} justify-between`}
+              aria-expanded={mobileWorkOpen}
+              aria-controls="mobile-work-links"
+              onClick={() => setMobileWorkOpen((open) => !open)}
             >
               Work
-            </Link>
-            <Link
-              href="/blog"
-              className={mobileLinkClass}
-              aria-current={isCurrentPath(pathname, "/blog") ? "page" : undefined}
-              onClick={() => setMobileMenuOpen(false)}
+              <ChevronDown
+                className={`size-4 transition-transform ${mobileWorkOpen ? "rotate-180" : ""}`}
+                aria-hidden="true"
+              />
+            </Button>
+            <div id="mobile-work-links" hidden={!mobileWorkOpen} className="space-y-1 pl-3">
+              {projects.map((project) => (
+                <Link
+                  key={project.slug}
+                  href={`/work/${project.slug}`}
+                  className={mobileLinkClass}
+                  aria-current={isCurrentPath(pathname, `/work/${project.slug}`) ? "page" : undefined}
+                  onClick={closeMobileMenu}
+                >
+                  {project.title}
+                </Link>
+              ))}
+              <Link
+                href="/work"
+                className={mobileLinkClass}
+                aria-current={pathname === "/work" ? "page" : undefined}
+                onClick={closeMobileMenu}
+              >
+                All work
+              </Link>
+            </div>
+
+            <Button
+              type="button"
+              variant="ghost"
+              className={`${mobileLinkClass} justify-between`}
+              aria-expanded={mobileBlogOpen}
+              aria-controls="mobile-blog-links"
+              onClick={() => setMobileBlogOpen((open) => !open)}
             >
               Blog
-            </Link>
+              <ChevronDown
+                className={`size-4 transition-transform ${mobileBlogOpen ? "rotate-180" : ""}`}
+                aria-hidden="true"
+              />
+            </Button>
+            <div id="mobile-blog-links" hidden={!mobileBlogOpen} className="space-y-1 pl-3">
+              {latestPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className={mobileLinkClass}
+                  aria-current={isCurrentPath(pathname, `/blog/${post.slug}`) ? "page" : undefined}
+                  onClick={closeMobileMenu}
+                >
+                  {post.title}
+                </Link>
+              ))}
+              <Link
+                href="/blog"
+                className={mobileLinkClass}
+                aria-current={pathname === "/blog" ? "page" : undefined}
+                onClick={closeMobileMenu}
+              >
+                All posts
+              </Link>
+            </div>
           </nav>
         </div>
       </Container>

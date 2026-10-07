@@ -209,6 +209,11 @@
     font-size: var(--body-copy-size);
     line-height: var(--body-copy-line-height);
   }
+
+  .about-page {
+    --nav-foreground: var(--about-heading);
+    --nav-muted: var(--about-text);
+  }
 }
 
 :root {
