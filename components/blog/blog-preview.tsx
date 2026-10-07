@@ -6,7 +6,7 @@ import { BlogReveal } from "@/components/blog/blog-reveal"
 import { Section } from "@/components/ui/section"
 import { getVisibleBlogPosts, type BlogPostSummary } from "@/lib/blog"
 
-const featuredSlugs = ["my-approach", "flutterbytes-lagos-2024"] as const
+const featuredSlugs = ["my-approach", "nahpi-hackathon-2026"] as const
 
 export async function BlogPreview() {
   const posts = await getVisibleBlogPosts()
