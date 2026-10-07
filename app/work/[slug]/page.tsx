@@ -84,7 +84,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
             <Heading id="project-heading" className="text-4xl sm:text-5xl">
               {project.title}
             </Heading>
-            <p className="mt-5 max-w-2xl text-nav-muted">
+            <p className="mt-5 max-w-2xl whitespace-pre-line leading-relaxed text-nav-muted">
               {project.description}
             </p>
           </header>
@@ -122,6 +122,21 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
                   )}
                 </dd>
               </div>
+              {project.liveUrl && (
+                <div>
+                  <dt className="mb-1 font-medium text-nav-foreground">Live</dt>
+                  <dd>
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-nav-muted underline underline-offset-4 transition-colors hover:text-nav-foreground focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-nav-foreground"
+                    >
+                      {project.liveUrl.replace(/^https?:\/\//, "")}
+                    </a>
+                  </dd>
+                </div>
+              )}
               <div>
                 <dt className="mb-1 font-medium text-nav-foreground">GitHub</dt>
                 <dd>
