@@ -12,21 +12,41 @@ type WorkPageProps = {
   params: Promise<{ slug: string }>
 }
 
+// Generates dynamic route parameters for all static project pages.
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }))
 }
 
+// Generates dynamic SEO metadata for an individual project showcase.
 export async function generateMetadata({ params }: WorkPageProps): Promise<Metadata> {
   const { slug } = await params
   const project = getProjectBySlug(slug)
 
   if (!project) return { title: "Project not found | Spencer Bright" }
 
+  const title = `${project.title} | Spencer Bright`
+  const description = project.description
+
   return {
-    title: `${project.title} | Spencer Bright`,
-    description: project.description,
+    title,
+    description,
+    alternates: {
+      canonical: `/work/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `/work/${slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   }
 }
+
 
 export default async function WorkDetailPage({ params }: WorkPageProps) {
   const { slug } = await params
