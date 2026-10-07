@@ -33,7 +33,7 @@ export function FollowLinks() {
             </>
           )
           const className =
-            "flex min-h-12 items-center justify-center gap-2 rounded-lg border border-nav-border px-3 text-nav-foreground transition-colors hover:bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground"
+            "group flex min-h-12 items-center justify-center gap-2 rounded-lg border border-nav-border px-3 text-nav-foreground transition-colors hover:bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground"
 
           return (
             <li key={platform}>

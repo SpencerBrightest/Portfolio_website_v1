@@ -1,5 +1,6 @@
 import { Mail } from "lucide-react"
 import { siFacebook, siGithub, siInstagram, siWhatsapp, siYoutube, siX } from "simple-icons"
+import { cn } from "cn"
 
 type SocialPlatform = "email" | "github" | "facebook" | "linkedin" | "instagram" | "youtube" | "x" | "whatsapp"
 
@@ -51,6 +52,17 @@ export function SocialIcon({ platform, className = "size-4" }: SocialIconProps) 
     x: siX.path,
     whatsapp: siWhatsapp.path,
   }[platform]
+  const brandHoverColor =
+    platform === "facebook"
+      ? "hover:text-social-facebook group-hover:text-social-facebook group-focus-visible:text-social-facebook"
+      : platform === "youtube"
+        ? "hover:text-social-youtube group-hover:text-social-youtube group-focus-visible:text-social-youtube"
+        : undefined
 
-  return <BrandGlyph path={brandPath} className={className} />
+  return (
+    <BrandGlyph
+      path={brandPath}
+      className={cn("transition-colors", className, brandHoverColor)}
+    />
+  )
 }
