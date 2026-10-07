@@ -1,5 +1,4 @@
 /* Global theme tokens and styles; adjust --grid-line per theme to tune the hero grid contrast. */
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -105,9 +104,6 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  --font-instrument-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-jetbrains-mono: "JetBrains Mono", ui-monospace, monospace;
-  --space-grotesk: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --body-copy-size: 1.125rem;
   --body-copy-line-height: 1.6;
   --about-heading: #111111;
