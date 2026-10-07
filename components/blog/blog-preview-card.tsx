@@ -33,7 +33,7 @@ export function BlogPreviewCard({ post }: BlogPreviewCardProps) {
               fill
               unoptimized
               sizes="(min-width: 51.25rem) 32rem, 100vw"
-              className="object-cover"
+              className="object-cover object-top"
             />
           ) : null}
         </div>
