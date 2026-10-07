@@ -5,10 +5,12 @@ import { cn } from "cn"
 
 type LoadingButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   isLoading?: boolean
-  variant?: "primary" | "secondary"
+  variant?: "primary" | "secondary" | "navigation"
 }
 
 const variantStyles: Record<NonNullable<LoadingButtonProps["variant"]>, string> = {
+  navigation:
+    "border-transparent bg-transparent text-nav-muted hover:border-transparent hover:bg-nav-hover hover:text-nav-foreground focus-visible:ring-nav-foreground",
   primary:
     "border-neutral-950 bg-neutral-950 text-white hover:border-neutral-800 hover:bg-neutral-800 focus-visible:ring-neutral-500 dark:border-white dark:bg-white dark:text-neutral-950 dark:hover:border-neutral-200 dark:hover:bg-neutral-200 dark:focus-visible:ring-neutral-400",
   secondary:
