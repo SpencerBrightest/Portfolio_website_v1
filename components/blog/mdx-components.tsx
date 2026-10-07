@@ -16,7 +16,7 @@ export function Block({ title, children }: BlockProps) {
       <Heading level={2} className="text-[1.3rem] leading-snug">
         {title}
       </Heading>
-      <div className="mt-3 space-y-3 text-nav-foreground">{children}</div>
+      <div className="mt-3 space-y-3 text-nav-muted">{children}</div>
     </section>
   )
 }
