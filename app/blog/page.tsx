@@ -1,10 +1,35 @@
-// Published blog index; draft About articles remain separate from these sample posts.
+// Published blog index listing technical writing and essays.
+import type { Metadata } from "next"
+
 import { PostCard } from "@/components/blog/post-card"
 import { Container } from "@/components/ui/container"
 import { Reveal } from "@/components/ui/reveal"
 import { Heading } from "@/components/ui/heading"
 import { getPublishedBlogPosts } from "@/lib/blog"
 
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Personal stories about engineering, projects, software design, and lessons learned by Spencer Bright.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog | Spencer Bright",
+    description:
+      "Personal stories about engineering, projects, software design, and lessons learned by Spencer Bright.",
+    url: "/blog",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Spencer Bright",
+    description:
+      "Personal stories about engineering, projects, software design, and lessons learned by Spencer Bright.",
+  },
+}
+
+// Renders the blog articles index page.
 export default async function BlogPage() {
   const posts = await getPublishedBlogPosts()
 

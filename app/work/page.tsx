@@ -1,9 +1,35 @@
+// Project portfolio index listing engineering work across web and mobile.
+import type { Metadata } from "next"
+
 import { ProjectCard } from "@/components/projects/project-card"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
 import { Reveal } from "@/components/ui/reveal"
 import { projects } from "@/data/projects"
 
+export const metadata: Metadata = {
+  title: "Work",
+  description:
+    "A showcase of projects built by Spencer Bright across web development, mobile apps, and systems engineering.",
+  alternates: {
+    canonical: "/work",
+  },
+  openGraph: {
+    title: "Work | Spencer Bright",
+    description:
+      "A showcase of projects built by Spencer Bright across web development, mobile apps, and systems engineering.",
+    url: "/work",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Work | Spencer Bright",
+    description:
+      "A showcase of projects built by Spencer Bright across web development, mobile apps, and systems engineering.",
+  },
+}
+
+// Renders the projects catalog with responsive card grid.
 export default function WorkPage() {
   return (
     <main className="flex-1 py-16 sm:py-20">

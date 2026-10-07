@@ -1,3 +1,5 @@
+// About page showcasing Spencer Bright's background, education, and technical journey.
+import type { Metadata } from "next"
 import Link from "next/link"
 
 import { InspirationSection } from "@/components/about/inspiration-section"
@@ -7,6 +9,29 @@ import { Container } from "@/components/ui/container"
 import { Reveal } from "@/components/ui/reveal"
 import { Heading } from "@/components/ui/heading"
 
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about Spencer Bright, a Level 400 Computer Engineering student pursuing software engineering and cybersecurity.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About | Spencer Bright",
+    description:
+      "Learn about Spencer Bright, a Level 400 Computer Engineering student pursuing software engineering and cybersecurity.",
+    url: "/about",
+    type: "profile",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About | Spencer Bright",
+    description:
+      "Learn about Spencer Bright, a Level 400 Computer Engineering student pursuing software engineering and cybersecurity.",
+  },
+}
+
+// Renders the personal about page detailing engineering background and interests.
 export default function AboutPage() {
   return (
     <main className="about-page flex-1 bg-nav-background text-about-heading">
