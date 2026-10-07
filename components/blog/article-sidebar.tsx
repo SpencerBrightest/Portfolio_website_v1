@@ -89,7 +89,7 @@ export function ArticleSidebar({ title, url, tags, featuredPosts }: ArticleSideb
                 rel="noreferrer"
                 aria-label={`Share ${title} on ${label}`}
                 title={`Share on ${label}`}
-                className="inline-flex size-11 items-center justify-center rounded-lg border border-nav-border text-nav-foreground transition-colors hover:bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground"
+                className="group inline-flex size-11 items-center justify-center rounded-lg border border-nav-border text-nav-foreground transition-colors hover:bg-nav-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nav-foreground"
               >
                 <SocialIcon platform={platform} className="size-4" />
               </a>

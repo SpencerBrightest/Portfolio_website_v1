@@ -42,15 +42,24 @@ const socialLinks: ContactSocial[] = [
   { label: "Facebook", platform: "facebook", href: siteContact.socials.facebook },
 ]
 
+const iconHoverClasses: Partial<Record<ContactSocial["platform"], string>> = {
+  email: "group-hover:text-social-gmail group-focus-visible:text-social-gmail",
+  github: "group-hover:text-social-github group-focus-visible:text-social-github",
+  instagram: "group-hover:text-social-instagram group-focus-visible:text-social-instagram",
+}
+
 function SocialItem({ label, platform, href }: ContactSocial) {
   const content = (
     <>
-      <SocialIcon platform={platform} className="size-7" />
+      <SocialIcon
+        platform={platform}
+        className={`size-7 transition-colors ${iconHoverClasses[platform] ?? ""}`}
+      />
       <span className="text-sm leading-5">{label}</span>
     </>
   )
   const className =
-    "flex min-h-16 min-w-16 flex-col items-center justify-center gap-2 rounded-lg text-about-text transition-colors hover:text-about-accent focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-about-heading"
+    "group flex min-h-16 min-w-16 flex-col items-center justify-center gap-2 rounded-lg text-about-text transition-colors hover:text-about-accent focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-about-heading"
 
   return (
     <li>
