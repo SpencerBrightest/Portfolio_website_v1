@@ -141,7 +141,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   height={760}
                   unoptimized
                   sizes="(min-width: 51.25rem) 55rem, 100vw"
-                  className="h-auto max-h-[34rem] w-full object-cover"
+                  className="h-auto max-h-[34rem] w-full object-cover object-top"
                 />
               </div>
               </Reveal>
