@@ -3,8 +3,6 @@ import { cva } from "class-variance-authority"
 import { cn } from "cn"
 import { ChevronDownIcon } from "lucide-react"
 
-import { LoadingButton } from "@/components/ui/loading-button"
-
 function NavigationMenu({
   align = "start",
   className,
