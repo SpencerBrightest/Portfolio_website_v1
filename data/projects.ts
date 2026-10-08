@@ -44,12 +44,12 @@ The project is deployed on Vercel with automatic preview deployments for every p
     postedAt: "07/06/2026",
   },
   {
-    slug: "waitlist-saas",
-    title: "Waitlist SaaS",
+    slug: "Poste",
+    title: "Poste",
     category: "Web app",
-    shortDescription: "A streamlined waitlist service for early-stage SaaS products. Features automated email verification, referral tracking, and an admin dashboard for user queue management.",
-    description: "A simple waitlist flow with an admin dashboard for growing products.",
-    tags: ["Next.js", "Tailwind", "Node.js"],
+    shortDescription: "A fullstack Saas App for Social Media Management",
+    description: "Comming soon",
+    tags: ["Next.js", "Tailwind", "Node.js","Prisma","Fapshi","Gemini","Cloudinary"],
   },
   {
     slug: "expense-tracker",

@@ -9,7 +9,6 @@ export function HeroProfileCard() {
           <p className="text-sm font-semibold text-nav-foreground">Spencer Bright</p>
           <p className="mt-0.5 text-xs text-nav-muted">Bamenda, Cameroon</p>
         </div>
-        <span className="size-2.5 rounded-full bg-status" aria-hidden="true" />
       </div>
     </section>
   )

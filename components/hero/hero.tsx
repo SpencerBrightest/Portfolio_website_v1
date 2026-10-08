@@ -20,7 +20,7 @@ export function Hero() {
           <div className="grid items-start gap-3 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-8 nav:grid-cols-[minmax(0,1.28fr)_minmax(0,0.72fr)] nav:gap-12 md:max-xl:gap-8">
             <Reveal className="max-w-2xl">
               <p className="mb-3 inline-flex min-h-8 items-center gap-2 rounded-full border border-nav-border px-3 text-[0.8125rem] text-nav-muted nav:mb-6">
-                <span className="size-2 rounded-full bg-status" aria-hidden="true" />
+                {/* <span className="size-2 rounded-full bg-status" aria-hidden="true" /> */}
                 Available for new work
               </p>
 
