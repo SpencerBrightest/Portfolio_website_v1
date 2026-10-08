@@ -43,6 +43,34 @@ export function Hero() {
                 robust engineering, and measurable outcomes.
               </p>
 
+              {/* Status and university credentials cards */}
+              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-2.5 nav:mt-5">
+                <div className="rounded-2xl border border-nav-border bg-nav-panel p-2.5">
+                  <p className="font-mono text-[0.65rem] uppercase tracking-wider text-nav-muted">
+                    Current
+                  </p>
+                  <p className="mt-1 text-xs font-semibold text-nav-foreground sm:text-[0.82rem] leading-tight">
+                    Computer Engineering Student
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-nav-border bg-nav-panel p-2.5">
+                  <p className="font-mono text-[0.65rem] uppercase tracking-wider text-nav-muted">
+                    University
+                  </p>
+                  <p className="mt-1 text-xs font-semibold text-nav-foreground sm:text-[0.82rem] leading-tight">
+                    University of Bamenda
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-nav-border bg-nav-panel p-2.5">
+                  <p className="font-mono text-[0.65rem] uppercase tracking-wider text-nav-muted">
+                    Expected Graduation
+                  </p>
+                  <p className="mt-1 text-xs font-semibold text-nav-foreground sm:text-[0.82rem] leading-tight">
+                    2028
+                  </p>
+                </div>
+              </div>
+
               {/* Left column action buttons aligned in a 2-column grid */}
               <div className="mt-4 grid w-full max-w-xs grid-cols-2 items-center gap-2 sm:max-w-sm nav:mt-6">
                 <ButtonLink
