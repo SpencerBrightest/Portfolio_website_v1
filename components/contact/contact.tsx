@@ -1,3 +1,7 @@
+// Contact section component with social items and mailto button featuring active click feedback.
+"use client"
+
+import { useState } from "react"
 import { ArrowRight } from "lucide-react"
 
 import { SocialIcon } from "@/components/ui/social-icon"
@@ -5,7 +9,9 @@ import { ButtonLink } from "@/components/ui/button-link"
 import { Container } from "@/components/ui/container"
 import { Reveal } from "@/components/ui/reveal"
 import { Heading } from "@/components/ui/heading"
+import { VercelTriangleSpinner } from "@/components/ui/vercel-triangle-spinner"
 import { siteContact } from "@/data/site"
+import { cn } from "@/lib/utils"
 
 type ContactSocial = {
   label: string
@@ -48,6 +54,7 @@ const iconHoverClasses: Partial<Record<ContactSocial["platform"], string>> = {
   instagram: "group-hover:text-social-instagram group-focus-visible:text-social-instagram",
 }
 
+// Renders individual social navigation items.
 function SocialItem({ label, platform, href }: ContactSocial) {
   const content = (
     <>
@@ -81,6 +88,45 @@ function SocialItem({ label, platform, href }: ContactSocial) {
   )
 }
 
+// Renders the Send a Message button with visual feedback when clicked.
+function SendMessageButton({ email }: { email: string }) {
+  const [isPending, setIsPending] = useState(false)
+
+  // Trigger feedback state briefly upon user interaction.
+  function handleClick() {
+    setIsPending(true)
+    setTimeout(() => {
+      setIsPending(false)
+    }, 1500)
+  }
+
+  return (
+    <ButtonLink
+      href={`mailto:${email}`}
+      onClick={handleClick}
+      aria-busy={isPending}
+      className="relative min-h-12 w-fit gap-2 rounded-full bg-nav-foreground px-6 text-sm font-medium text-nav-background hover:bg-nav-muted hover:text-nav-background sm:justify-self-end"
+    >
+      <span
+        className={cn(
+          "inline-flex items-center gap-2 transition-opacity duration-150",
+          isPending && "opacity-0"
+        )}
+      >
+        Send a Message
+        <ArrowRight className="size-4" aria-hidden="true" />
+      </span>
+      {isPending && (
+        <span className="absolute inset-0 flex items-center justify-center">
+          <VercelTriangleSpinner />
+          <span className="sr-only">Opening mail app...</span>
+        </span>
+      )}
+    </ButtonLink>
+  )
+}
+
+// Contact section component with heading, messaging button, and social media destinations.
 export function Contact() {
   return (
     <section
@@ -109,13 +155,7 @@ export function Contact() {
             </div>
 
             {siteContact.email ? (
-              <ButtonLink
-                href={`mailto:${siteContact.email}`}
-                className="min-h-12 w-fit gap-2 rounded-full bg-nav-foreground px-6 text-sm font-medium text-nav-background hover:bg-nav-muted hover:text-nav-background sm:justify-self-end"
-              >
-                Send a Message
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </ButtonLink>
+              <SendMessageButton email={siteContact.email} />
             ) : (
               <span
                 aria-disabled="true"
@@ -141,3 +181,4 @@ export function Contact() {
     </section>
   )
 }
+
