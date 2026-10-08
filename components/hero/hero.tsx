@@ -8,6 +8,7 @@ import { HeroGrid } from "@/components/hero/hero-grid"
 import { HeroProfileCard } from "@/components/hero/hero-profile-card"
 import { Reveal } from "@/components/ui/reveal"
 
+// Main homepage hero component displaying introduction, educational credentials, and profile card.
 export function Hero() {
   return (
     <section
@@ -18,42 +19,43 @@ export function Hero() {
       <div className="relative z-10 w-full">
         <Container>
           <div className="grid items-start gap-4 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-8 nav:grid-cols-[minmax(0,1.28fr)_minmax(0,0.72fr)] nav:gap-12 md:max-xl:gap-8">
-            {/* Left column — text stack and CTAs */}
+            {/* Left column — text stack, credentials cards, and CTAs */}
             <Reveal className="max-w-2xl">
-              <p className="mb-2 inline-flex min-h-7 items-center gap-2 rounded-full border border-nav-border px-3 text-xs text-nav-muted nav:mb-6">
+              <p className="mb-2 inline-flex min-h-7 items-center gap-2 rounded-full border border-nav-border px-3 text-xs text-nav-muted nav:mb-4">
                 Available for new work
               </p>
 
-              <p className="mb-2 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-nav-muted sm:text-xs sm:tracking-[0.14em] nav:mb-3">
+              <p className="mb-2 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-nav-muted sm:text-xs sm:tracking-[0.14em] nav:mb-2">
                 HI, I&apos;M SPENCER BRIGHT
               </p>
 
               <Heading
                 id="hero-heading"
-                className="text-[2rem] leading-[1.05] sm:text-6xl md:text-[clamp(2.75rem,5.8vw,4.25rem)] xl:text-[5.5rem]"
+                className="text-xl leading-snug sm:text-3xl md:text-4xl lg:text-[2.75rem]"
               >
                 Empowering people through{" "}
                 <span className="text-about-accent">technology</span> and
                 community.
               </Heading>
 
-              <p className="mt-2 max-w-xl text-sm text-nav-muted sm:text-base nav:mt-5">
-                I am a software developer and builder passionate about using
-                technology to create meaningful impact.
+              <p className="mt-2 max-w-xl text-sm text-nav-muted sm:text-base nav:mt-4">
+                Software engineer and AI/ML builder focused on practical products,
+                robust engineering, and measurable outcomes.
               </p>
 
-              <div className="mt-3 grid w-full grid-cols-2 items-center gap-2 sm:flex sm:w-fit sm:flex-wrap sm:gap-3 nav:mt-7">
+              {/* Left column action buttons aligned in a 2-column grid */}
+              <div className="mt-4 grid w-full max-w-xs grid-cols-2 items-center gap-2 sm:max-w-sm nav:mt-6">
                 <ButtonLink
                   href="/work"
-                  className="min-h-10 rounded-full px-2 text-xs transition-transform hover:-translate-y-0.5 active:scale-[0.97] sm:min-h-11 sm:px-6 sm:text-[0.95rem]"
+                  className="min-h-10 rounded-full px-2 text-xs transition-transform hover:-translate-y-0.5 active:scale-[0.97] sm:px-4 sm:text-xs"
                 >
                   View my work
-                  <ArrowRight className="size-4" aria-hidden="true" />
+                  <ArrowRight className="size-3.5" aria-hidden="true" />
                 </ButtonLink>
                 <ButtonLink
                   href="/#contact"
                   variant="outline"
-                  className="min-h-10 rounded-full border-nav-border bg-nav-background px-2 text-xs text-nav-foreground hover:-translate-y-0.5 hover:bg-nav-hover hover:text-nav-foreground active:scale-[0.97] sm:min-h-11 sm:px-6 sm:text-[0.95rem]"
+                  className="min-h-10 rounded-full border-nav-border bg-nav-background px-2 text-xs text-nav-foreground hover:-translate-y-0.5 hover:bg-nav-hover hover:text-nav-foreground active:scale-[0.97] sm:px-4 sm:text-xs"
                 >
                   Get in touch
                 </ButtonLink>
@@ -102,4 +104,3 @@ export function Hero() {
     </section>
   )
 }
-
