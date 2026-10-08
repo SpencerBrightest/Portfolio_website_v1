@@ -55,6 +55,12 @@ export function SocialIcon({ platform, className = "size-4" }: SocialIconProps) 
   const brandHoverColor =
     platform === "facebook"
       ? "hover:text-social-facebook group-hover:text-social-facebook group-focus-visible:text-social-facebook"
+      : platform === "instagram"
+       ? "hover:text-social-instagram group-hover:text-social-instagram group-focus-visible:text-social-instagram"
+       
+          : platform === "whatsapp"
+       ? "hover:text-social-whatsapp group-hover:text-social-whatsapp group-focus-visible:text-social-whatsapp"
+
       : platform === "youtube"
         ? "hover:text-social-youtube group-hover:text-social-youtube group-focus-visible:text-social-youtube"
         : undefined
