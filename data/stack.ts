@@ -59,14 +59,21 @@ export const stack = [
   { name: "Figma", icon: "siFigma", hoverDark: "#F24E1E", hoverLight: "#F24E1E" },
 ] as const satisfies readonly StackTool[]
 
-// Keep the footer's compact technology list unchanged as the marquee gets its expanded tool list.
+// Framer Motion brand SVG path for the footer technology stack list.
+export const framerMotionIconPath = "M4 0h16v8h-8l8 8H4v8h8L4 8V0z"
+
+// Technology stack list rendered in the application footer.
 export const footerStack = [
   {
     label: "Next.js",
     iconPath: stackIconPaths.siNextdotjs,
     iconColor: "var(--nav-foreground)",
   },
-  { label: "React", iconPath: stackIconPaths.siReact, iconColor: `#${siReact.hex}` },
+  {
+    label: "Framer Motion",
+    iconPath: framerMotionIconPath,
+    iconColor: "#0055FF",
+  },
   {
     label: "TypeScript",
     iconPath: stackIconPaths.siTypescript,
@@ -79,3 +86,4 @@ export const footerStack = [
   },
   { label: "shadcn/ui", iconPath: siShadcnui.path, iconColor: "var(--nav-foreground)" },
 ] as const
+
