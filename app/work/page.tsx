@@ -39,7 +39,7 @@ export default function WorkPage() {
             <p className="mb-5 font-mono text-xs uppercase tracking-[0.14em] text-nav-muted">
               Work
             </p>
-            <Heading id="work-heading">Projects I’ve built</Heading>
+            <Heading id="work-heading">Projects <span className="text-about-accent"> I’ve </span> built</Heading>
             <p className="mt-4 max-w-xl text-nav-muted">
               A selection of projects I’ve built and learned from.
             </p>
