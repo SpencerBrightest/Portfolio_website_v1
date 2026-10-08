@@ -19,12 +19,12 @@ function ButtonLinkContent({ children }: { children: ReactNode }) {
 
   return (
     <span
-      className="relative inline-flex items-center justify-center gap-inherit"
+      className="relative inline-flex items-center justify-center"
       aria-busy={pending}
     >
       <span
         className={cn(
-          "inline-flex items-center gap-inherit transition-opacity duration-150 motion-reduce:transition-none",
+          "inline-flex items-center gap-2 transition-opacity duration-150 motion-reduce:transition-none",
           pending && "opacity-0"
         )}
       >
@@ -39,6 +39,7 @@ function ButtonLinkContent({ children }: { children: ReactNode }) {
     </span>
   )
 }
+
 
 // Styled link component with automatic pending navigation state feedback.
 export function ButtonLink({
