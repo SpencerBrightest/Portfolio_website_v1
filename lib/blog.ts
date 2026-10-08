@@ -23,10 +23,10 @@ export type BlogImage = {
 }
 
 type Frontmatter = {
-  title?: unknown
-  description?: unknown
+  title?: string
+  description?: string
   date?: unknown
-  category?: unknown
+  category?: string
   readTime?: unknown
   image?: unknown
   tags?: unknown
