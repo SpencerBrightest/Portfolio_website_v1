@@ -160,23 +160,49 @@ function SkeletonSectionHeading({
 export function HomePageSkeleton() {
   return (
     <LoadingMain label="home page">
-      <section className="relative isolate overflow-hidden py-3 nav:pb-6 nav:pt-8">
+      <section className="relative isolate flex min-h-0 items-start overflow-hidden py-6 nav:min-h-[calc(100svh-4.0625rem)] nav:items-center nav:pb-6 nav:pt-8">
         <Container>
-          <div className="grid items-start gap-3 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-8 nav:grid-cols-[minmax(0,1.28fr)_minmax(0,0.72fr)] nav:gap-12">
+          <div className="grid w-full items-start gap-4 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-8 nav:grid-cols-[minmax(0,1.28fr)_minmax(0,0.72fr)] nav:gap-12 md:max-xl:gap-8">
             <div className="max-w-2xl">
-              <Skeleton className="mb-6 h-8 w-44 rounded-full" />
-              <EyebrowSkeleton className="mb-3 w-40" />
-              <Skeleton className="h-12 w-[min(25rem,100%)] sm:h-16" />
-              <ParagraphSkeleton className="mt-5 max-w-xl" widths={["w-full", "w-[88%]", "w-[66%]"]} />
-              <div className="mt-7 flex gap-3">
-                <Skeleton className="h-11 w-36 rounded-full" />
-                <Skeleton className="h-11 w-32 rounded-full" />
+              <Skeleton className="mb-2 h-7 w-44 rounded-full nav:mb-4" />
+              <EyebrowSkeleton className="mb-2 w-40 nav:mb-2" />
+              <div aria-hidden="true" className="space-y-2">
+                <Skeleton className="h-7 w-full sm:h-9 lg:h-11" />
+                <Skeleton className="h-7 w-[78%] sm:h-9 lg:h-11" />
+              </div>
+              <ParagraphSkeleton
+                className="mt-2 max-w-xl nav:mt-4"
+                widths={["w-full", "w-[88%]", "w-[66%]"]}
+              />
+              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-2.5 nav:mt-5">
+                {Array.from({ length: 3 }, (_, index) => (
+                  <div key={index} className="rounded-2xl border border-nav-border bg-nav-panel p-2.5">
+                    <Skeleton className="h-2.5 w-16" />
+                    <Skeleton className="mt-2 h-3 w-full" />
+                    <Skeleton className="mt-1 h-3 w-3/4" />
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 grid w-full max-w-xs grid-cols-2 gap-2 sm:max-w-sm nav:mt-6">
+                <Skeleton className="h-10 w-full rounded-full" />
+                <Skeleton className="h-10 w-full rounded-full" />
               </div>
             </div>
-            <div className="mx-auto w-full max-w-[22rem] md:ml-auto md:mx-0 nav:max-w-[25rem]">
-              <Skeleton className="aspect-square w-full rounded-3xl border border-nav-border p-3" />
-              <div className="mt-4 rounded-3xl border border-nav-border bg-nav-panel p-2.5">
-                <Skeleton className="h-16 w-full rounded-2xl" />
+            <div className="mx-auto w-full max-w-[13rem] sm:max-w-[18rem] md:ml-auto md:mx-0 nav:max-w-[25rem]">
+              <div className="aspect-square rounded-3xl border border-nav-border bg-nav-panel p-2 nav:p-3">
+                <Skeleton className="size-full rounded-2xl border border-nav-border" />
+              </div>
+              <div className="mt-2 rounded-3xl border border-nav-border bg-nav-panel p-2 nav:mt-4 nav:p-2.5">
+                <div className="flex min-h-12 items-center rounded-2xl border border-nav-border bg-nav-background px-3 py-2 nav:min-h-16 nav:px-4 nav:py-3">
+                  <div className="space-y-2">
+                    <Skeleton className="h-3.5 w-28" />
+                    <Skeleton className="h-3 w-36" />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-2 grid grid-cols-2 gap-2 nav:mt-3">
+                <Skeleton className="h-10 w-full rounded-full" />
+                <Skeleton className="h-10 w-full rounded-full" />
               </div>
             </div>
           </div>
@@ -215,20 +241,32 @@ export function HomePageSkeleton() {
         </Container>
       </section>
 
-      <section className="border-t border-nav-border py-8 sm:py-10">
+      <section className="border-t border-nav-border bg-nav-background py-12 sm:py-20">
         <Container>
-          <div className="grid items-center gap-6 nav:grid-cols-[minmax(0,1fr)_auto_auto] nav:gap-10">
-            <div>
+          <div className="grid gap-8 rounded-2xl border border-nav-border bg-nav-panel p-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end sm:gap-x-10 sm:gap-y-8 sm:p-10 lg:p-12">
+            <div className="max-w-3xl">
               <EyebrowSkeleton className="mb-3 w-24" />
-              <Skeleton className="h-6 w-72 max-w-full" />
-              <ParagraphSkeleton className="mt-3 max-w-lg" widths={["w-full", "w-[75%]"]} />
+              <div aria-hidden="true" className="space-y-2">
+                <Skeleton className="h-8 w-full sm:h-10" />
+                <Skeleton className="h-8 w-[82%] sm:h-10" />
+              </div>
+              <ParagraphSkeleton
+                className="mt-4 max-w-2xl"
+                widths={["w-full", "w-[75%]"]}
+              />
             </div>
-            <Skeleton className="h-11 w-36 rounded-md" />
-            <div className="flex gap-3">
+            <Skeleton className="h-12 w-36 rounded-full sm:justify-self-end" />
+            <ul
+              aria-hidden="true"
+              className="flex flex-wrap items-center gap-2 border-t border-nav-border pt-5 sm:col-span-2 sm:gap-4"
+            >
               {Array.from({ length: 6 }, (_, index) => (
-                <Skeleton key={index} className="size-12 rounded-lg" />
+                <li key={index} className="flex min-h-16 min-w-16 flex-col items-center justify-center gap-2 rounded-lg">
+                  <Skeleton className="size-7 rounded-md" />
+                  <Skeleton className="h-3 w-12" />
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </Container>
       </section>
