@@ -1,14 +1,16 @@
-// Homepage hero section with 2-column layout: left text stack + right portrait card with portfolio actions.
-import { ArrowRight, Download, Eye } from "lucide-react"
+// Homepage hero section with a cleaner two-column layout and restrained utility icons.
+import { ArrowRight, Download, Eye, Mail, MapPin } from "lucide-react"
 
 import { ButtonLink } from "@/components/ui/button-link"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
 import { HeroGrid } from "@/components/hero/hero-grid"
-import { HeroProfileCard } from "@/components/hero/hero-profile-card"
 import { Reveal } from "@/components/ui/reveal"
+import { siteContact } from "@/data/site"
 
-// Main homepage hero component displaying introduction, educational credentials, and profile card.
+const actionButtonClass =
+  "min-h-11 rounded-full px-4 text-sm font-medium transition-transform hover:-translate-y-0.5 active:scale-[0.98] sm:text-[0.85rem]"
+
 export function Hero() {
   return (
     <section
@@ -18,99 +20,76 @@ export function Hero() {
       <HeroGrid />
       <div className="relative z-10 w-full">
         <Container>
-          <div className="grid items-start gap-4 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-8 nav:grid-cols-[minmax(0,1.28fr)_minmax(0,0.72fr)] nav:gap-12 md:max-xl:gap-8">
-            {/* Left column — text stack, credentials cards, and CTAs */}
-            <Reveal className="max-w-2xl">
-              <p className="mb-2 inline-flex min-h-7 items-center gap-2 rounded-full border border-nav-border px-3 text-xs text-nav-muted nav:mb-4">
+          <div className="grid items-center gap-5 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:gap-8 nav:gap-12">
+            <Reveal className="order-2 w-full max-w-2xl md:order-1">
+              <p className="mb-3 hidden items-center gap-2 rounded-full border border-nav-border px-3 py-1.5 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-nav-muted md:inline-flex">
                 Available for new work
               </p>
 
-              <p className="mb-2 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-nav-muted sm:text-xs sm:tracking-[0.14em] nav:mb-2">
-                HI, I&apos;M SPENCER BRIGHT
+              <p className="mb-2 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-nav-muted sm:text-xs sm:tracking-[0.14em]">
+                Hi, I&apos;m Spencer Bright
               </p>
 
               <Heading
                 id="hero-heading"
-                className="text-xl leading-snug sm:text-3xl md:text-4xl lg:text-[2.75rem]"
+                className="text-[2rem] leading-[0.98] tracking-[-0.05em] text-nav-foreground sm:text-4xl md:text-[2.75rem] lg:text-[4.5rem]"
               >
-                Empowering people through{" "}
-                <span className="text-about-accent">technology</span> and
-                community.
+                Better technology starts with people.
               </Heading>
 
-              <p className="mt-2 max-w-xl text-sm text-nav-muted sm:text-base nav:mt-4">
-               I code build and innovate using the latest technologies to solve real life problems
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-nav-muted sm:text-base">
+                I build web and mobile apps for real users, and I share what I learn so others can
+                build too.
               </p>
 
-              {/* Status and university credentials cards */}
-              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-2.5 nav:mt-5">
-                <div className="rounded-2xl border border-nav-border bg-nav-panel p-2.5">
-                  <p className="font-mono text-[0.65rem] uppercase tracking-wider text-nav-muted">
-                    Current
-                  </p>
-                  <p className="mt-1 text-xs font-semibold text-nav-foreground sm:text-[0.82rem] leading-tight">
-                    Computer Engineering Student
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-nav-border bg-nav-panel p-2.5">
-                  <p className="font-mono text-[0.65rem] uppercase tracking-wider text-nav-muted">
-                    University
-                  </p>
-                  <p className="mt-1 text-xs font-semibold text-nav-foreground sm:text-[0.82rem] leading-tight">
-                    University of Bamenda
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-nav-border bg-nav-panel p-2.5">
-                  <p className="font-mono text-[0.65rem] uppercase tracking-wider text-nav-muted">
-                    Expected Graduation
-                  </p>
-                  <p className="mt-1 text-xs font-semibold text-nav-foreground sm:text-[0.82rem] leading-tight">
-                    2028
-                  </p>
-                </div>
-              </div>
-
-              {/* Left column action buttons aligned in a 2-column grid */}
-              <div className="mt-4 grid w-full max-w-xs grid-cols-2 items-center gap-2 sm:max-w-sm nav:mt-6">
-                <ButtonLink
-                  href="/work"
-                  className="min-h-10 rounded-full px-2 text-xs transition-transform hover:-translate-y-0.5 active:scale-[0.97] sm:px-4 sm:text-xs"
-                >
+              <div className="mt-6 grid w-full max-w-[28rem] grid-cols-2 items-center gap-2.5">
+                <ButtonLink href="/work" className={`${actionButtonClass} bg-primary text-primary-foreground`}>
                   View my work
-                  <ArrowRight className="size-3.5" aria-hidden="true" />
+                  <ArrowRight className="size-3.5 text-current" aria-hidden="true" />
                 </ButtonLink>
                 <ButtonLink
                   href="/#contact"
                   variant="outline"
-                  className="min-h-10 rounded-full border-nav-border bg-nav-background px-2 text-xs text-nav-foreground hover:-translate-y-0.5 hover:bg-nav-hover hover:text-nav-foreground active:scale-[0.97] sm:px-4 sm:text-xs"
+                  className={`${actionButtonClass} border-nav-border bg-nav-background text-nav-foreground hover:bg-nav-hover`}
                 >
                   Get in touch
                 </ButtonLink>
               </div>
+
+              <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-nav-muted">
+                <a
+                  href={`mailto:${siteContact.email}`}
+                  className="inline-flex items-center gap-1.5 text-nav-muted transition-colors hover:text-nav-foreground"
+                >
+                  <Mail className="size-3.5 shrink-0 text-neutral-400" aria-hidden="true" />
+                  <span>{siteContact.email}</span>
+                </a>
+                <span className="inline-flex items-center gap-1.5">
+                  <MapPin className="size-3.5 shrink-0 text-neutral-400" aria-hidden="true" />
+                  <span>Bamenda, Cameroon</span>
+                </span>
+              </div>
             </Reveal>
 
-            {/* Right column — portrait card, profile info, and portfolio actions */}
-            <Reveal className="mx-auto w-full max-w-[13rem] sm:max-w-[18rem] md:ml-auto md:mx-0 nav:max-w-[25rem]">
+            <Reveal className="order-1 w-full max-w-[13rem] justify-self-center sm:max-w-[18rem] md:order-2 md:ml-auto md:mr-0 md:max-w-[25rem] md:-translate-y-2">
               <div
                 role="img"
                 aria-label="Portrait upload placeholder"
-                className="aspect-square rounded-3xl border border-nav-border bg-nav-panel p-2 nav:p-3"
+                className="aspect-square rounded-[1.6rem] border border-nav-border bg-nav-panel p-2 nav:p-3"
               >
                 <div
                   aria-hidden="true"
-                  className="size-full rounded-2xl border border-nav-border bg-nav-background"
+                  className="size-full rounded-[1.25rem] border border-nav-border bg-nav-background"
                 />
               </div>
-              <HeroProfileCard />
 
-              {/* Portfolio download and view actions */}
-              <div className="mt-2 grid grid-cols-2 gap-2 nav:mt-3">
+              <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                 <ButtonLink
                   href="/portfolio.pdf"
                   download
-                  className="min-h-10 rounded-full px-2 text-xs transition-transform hover:-translate-y-0.5 active:scale-[0.97] sm:px-4 sm:text-[0.85rem]"
+                  className={`${actionButtonClass} w-full bg-primary text-primary-foreground`}
                 >
-                  <Download className="size-3.5" aria-hidden="true" />
+                  <Download className="size-3.5 text-current" aria-hidden="true" />
                   Download CV
                 </ButtonLink>
                 <ButtonLink
@@ -118,9 +97,9 @@ export function Hero() {
                   target="_blank"
                   rel="noopener"
                   variant="outline"
-                  className="min-h-10 rounded-full border-nav-border bg-nav-background px-2 text-xs text-nav-foreground hover:-translate-y-0.5 hover:bg-nav-hover hover:text-nav-foreground active:scale-[0.97] sm:px-4 sm:text-[0.85rem]"
+                  className={`${actionButtonClass} w-full border-nav-border bg-nav-background text-nav-foreground hover:bg-nav-hover`}
                 >
-                  <Eye className="size-3.5" aria-hidden="true" />
+                  <Eye className="size-3.5 text-neutral-400" aria-hidden="true" />
                   See CV
                 </ButtonLink>
               </div>
