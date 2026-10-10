@@ -7,6 +7,7 @@ type SocialPlatform = "email" | "github" | "facebook" | "linkedin" | "instagram"
 type SocialIconProps = {
   platform: SocialPlatform
   className?: string
+  monochrome?: boolean
 }
 
 type BrandGlyphProps = {
@@ -28,7 +29,11 @@ function BrandGlyph({ path, className }: BrandGlyphProps) {
   )
 }
 
-export function SocialIcon({ platform, className = "size-4" }: SocialIconProps) {
+export function SocialIcon({
+  platform,
+  className = "size-4",
+  monochrome = false,
+}: SocialIconProps) {
   if (platform === "email") {
     return <Mail className={className} strokeWidth={1.8} aria-hidden="true" />
   }
@@ -52,18 +57,13 @@ export function SocialIcon({ platform, className = "size-4" }: SocialIconProps) 
     x: siX.path,
     whatsapp: siWhatsapp.path,
   }[platform]
-  const brandHoverColor =
-    platform === "facebook"
-      ? "hover:text-social-facebook group-hover:text-social-facebook group-focus-visible:text-social-facebook"
-      : platform === "instagram"
-       ? "hover:text-social-instagram group-hover:text-social-instagram group-focus-visible:text-social-instagram"
-       
-          : platform === "whatsapp"
-       ? "hover:text-social-whatsapp group-hover:text-social-whatsapp group-focus-visible:text-social-whatsapp"
-
-      : platform === "youtube"
-        ? "hover:text-social-youtube group-hover:text-social-youtube group-focus-visible:text-social-youtube"
-        : undefined
+  const brandHoverColors: Partial<Record<SocialPlatform, string>> = {
+    facebook: "hover:text-social-facebook group-hover:text-social-facebook group-focus-visible:text-social-facebook",
+    instagram: "hover:text-social-instagram group-hover:text-social-instagram group-focus-visible:text-social-instagram",
+    whatsapp: "hover:text-social-whatsapp group-hover:text-social-whatsapp group-focus-visible:text-social-whatsapp",
+    youtube: "hover:text-social-youtube group-hover:text-social-youtube group-focus-visible:text-social-youtube",
+  }
+  const brandHoverColor = monochrome ? undefined : brandHoverColors[platform]
 
   return (
     <BrandGlyph
