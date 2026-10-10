@@ -39,8 +39,7 @@ export function Hero() {
               </Heading>
 
               <p className="mt-2 max-w-xl text-sm text-nav-muted sm:text-base nav:mt-4">
-                Software engineer and AI/ML builder focused on practical products,
-                robust engineering, and measurable outcomes.
+               I code build and innovate using the latest technologies to solve real life problems
               </p>
 
               {/* Status and university credentials cards */}
@@ -112,7 +111,7 @@ export function Hero() {
                   className="min-h-10 rounded-full px-2 text-xs transition-transform hover:-translate-y-0.5 active:scale-[0.97] sm:px-4 sm:text-[0.85rem]"
                 >
                   <Download className="size-3.5" aria-hidden="true" />
-                  Download
+                  Download CV
                 </ButtonLink>
                 <ButtonLink
                   href="/portfolio.pdf"
@@ -122,7 +121,7 @@ export function Hero() {
                   className="min-h-10 rounded-full border-nav-border bg-nav-background px-2 text-xs text-nav-foreground hover:-translate-y-0.5 hover:bg-nav-hover hover:text-nav-foreground active:scale-[0.97] sm:px-4 sm:text-[0.85rem]"
                 >
                   <Eye className="size-3.5" aria-hidden="true" />
-                  See portfolio
+                  See CV
                 </ButtonLink>
               </div>
             </Reveal>
