@@ -6,19 +6,21 @@ import { Footer } from "@/components/layout/footer"
 import { Navbar } from "@/components/layout/navbar"
 import { WhatsAppFloat } from "@/components/contact/whatsapp-float"
 import { ThemeProvider } from "@/components/ui/theme-provider"
-import { siteConfig } from "@/data/site"
+import { siteConfig, siteContact } from "@/data/site"
 import "./globals.css"
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-instrument-sans",
   display: "swap",
+  preload: true,
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   display: "swap",
+  preload: true,
 })
 
 const spaceGrotesk = Space_Grotesk({
@@ -34,6 +36,46 @@ export const viewport: Viewport = {
   ],
   width: "device-width",
   initialScale: 1,
+}
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  sameAs: Object.values(siteContact.socials).filter(Boolean),
+  jobTitle: "Software Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "Freelance",
+  },
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Full Stack Development",
+    "Mobile Development",
+    "Cybersecurity",
+    "Flutter",
+    "Firebase",
+    "Supabase",
+    "Tailwind CSS",
+  ],
+}
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${siteConfig.url}/blog?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
 }
 
 export const metadata: Metadata = {
@@ -93,16 +135,31 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  other: {
+    "script:ld+json:person": JSON.stringify(personSchema),
+    "script:ld+json:website": JSON.stringify(websiteSchema),
+  },
 }
 
 // Renders the root HTML document with custom font variables and theme wrapper.
-export default async function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
       className={`h-full antialiased ${instrumentSans.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://github.com" />
+        <link rel="dns-prefetch" href="https://www.linkedin.com" />
+        <link rel="dns-prefetch" href="https://www.instagram.com" />
+        <link rel="dns-prefetch" href="https://www.youtube.com" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/og.svg" />
+      </head>
       <body className="flex min-h-full flex-col bg-nav-background text-nav-foreground">
         <ThemeProvider>
           <Navbar />

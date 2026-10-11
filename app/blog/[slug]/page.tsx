@@ -39,6 +39,33 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     ? post.description
     : `${post.description} By Spencer Bright.`
   const title = `${post.title}${post.isDraft ? " (Draft)" : ""} | Spencer Bright`
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://spencerbright.dev"
+  const articleUrl = `${baseUrl}/blog/${slug}`
+
+  const blogPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    image: post.image ? `${baseUrl}${post.image.src}` : `${baseUrl}/og.svg`,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    author: {
+      "@type": "Person",
+      name: "Spencer Bright",
+      url: baseUrl,
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Spencer Bright",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": articleUrl,
+    },
+    keywords: post.tags?.join(", "),
+    articleSection: post.category,
+  }
 
   return {
     title,
@@ -61,6 +88,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       title,
       description,
       ...(post.image ? { images: [post.image.src] } : {}),
+    },
+    other: {
+      "script:ld+json": JSON.stringify(blogPostingSchema),
     },
   }
 }
@@ -139,7 +169,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   alt={post.image.alt}
                   width={1400}
                   height={760}
-                  unoptimized
                   sizes="(min-width: 51.25rem) 55rem, 100vw"
                   className="h-auto max-h-[34rem] w-full object-cover object-top"
                 />

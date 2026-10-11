@@ -28,6 +28,8 @@ export function ProjectMedia({
         <Image
           src={project.image.src}
           alt={project.image.alt}
+          width={project.image.width}
+          height={project.image.height}
           fill
           sizes={variant === "card" ? "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" : "(min-width: 768px) 75vw, 100vw"}
           className="object-cover"

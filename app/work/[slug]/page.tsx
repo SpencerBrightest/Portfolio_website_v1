@@ -26,6 +26,34 @@ export async function generateMetadata({ params }: WorkPageProps): Promise<Metad
 
   const title = `${project.title} | Spencer Bright`
   const description = project.description
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://spencerbright.dev"
+  const projectUrl = `${baseUrl}/work/${slug}`
+
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: project.title,
+    description: project.shortDescription || project.description,
+    image: project.image ? `${baseUrl}${project.image.src}` : `${baseUrl}/og.svg`,
+    url: projectUrl,
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+    author: {
+      "@type": "Person",
+      name: "Spencer Bright",
+      url: baseUrl,
+    },
+    keywords: project.tags.join(", "),
+    ...(project.githubUrl && { codeRepository: project.githubUrl }),
+    ...(project.liveUrl && { downloadUrl: project.liveUrl }),
+    ...(project.postedAt && { datePublished: project.postedAt }),
+  }
 
   return {
     title,
@@ -43,6 +71,9 @@ export async function generateMetadata({ params }: WorkPageProps): Promise<Metad
       card: "summary_large_image",
       title,
       description,
+    },
+    other: {
+      "script:ld+json": JSON.stringify(projectSchema),
     },
   }
 }

@@ -162,47 +162,42 @@ export function HomePageSkeleton() {
     <LoadingMain label="home page">
       <section className="relative isolate flex min-h-0 items-start overflow-hidden py-6 nav:min-h-[calc(100svh-4.0625rem)] nav:items-center nav:pb-6 nav:pt-8">
         <Container>
-          <div className="grid w-full items-start gap-4 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-8 nav:grid-cols-[minmax(0,1.28fr)_minmax(0,0.72fr)] nav:gap-12 md:max-xl:gap-8">
-            <div className="max-w-2xl">
-              <Skeleton className="mb-2 h-7 w-44 rounded-full nav:mb-4" />
-              <EyebrowSkeleton className="mb-2 w-40 nav:mb-2" />
-              <div aria-hidden="true" className="space-y-2">
-                <Skeleton className="h-7 w-full sm:h-9 lg:h-11" />
-                <Skeleton className="h-7 w-[78%] sm:h-9 lg:h-11" />
+          <div className="grid w-full items-center gap-5 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:gap-8 nav:gap-12">
+            <div className="order-1 mx-auto w-full max-w-[13rem] justify-self-center sm:max-w-[18rem] md:order-2 md:ml-auto md:mr-0 md:max-w-[25rem] md:-translate-y-2">
+              <div className="aspect-square rounded-[1.6rem] border border-nav-border bg-nav-panel p-2 nav:p-3">
+                <Skeleton className="size-full rounded-[1.25rem] border border-nav-border" />
               </div>
-              <ParagraphSkeleton
-                className="mt-2 max-w-xl nav:mt-4"
-                widths={["w-full", "w-[88%]", "w-[66%]"]}
-              />
-              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-2.5 nav:mt-5">
-                {Array.from({ length: 3 }, (_, index) => (
-                  <div key={index} className="rounded-2xl border border-nav-border bg-nav-panel p-2.5">
-                    <Skeleton className="h-2.5 w-16" />
-                    <Skeleton className="mt-2 h-3 w-full" />
-                    <Skeleton className="mt-1 h-3 w-3/4" />
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 grid w-full max-w-xs grid-cols-2 gap-2 sm:max-w-sm nav:mt-6">
-                <Skeleton className="h-10 w-full rounded-full" />
-                <Skeleton className="h-10 w-full rounded-full" />
+              <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                <Skeleton className="h-11 w-full rounded-full" />
+                <Skeleton className="h-11 w-full rounded-full" />
               </div>
             </div>
-            <div className="mx-auto w-full max-w-[13rem] sm:max-w-[18rem] md:ml-auto md:mx-0 nav:max-w-[25rem]">
-              <div className="aspect-square rounded-3xl border border-nav-border bg-nav-panel p-2 nav:p-3">
-                <Skeleton className="size-full rounded-2xl border border-nav-border" />
+
+            <div className="order-2 w-full max-w-2xl md:order-1">
+              <Skeleton className="mb-3 hidden h-7 w-44 rounded-full md:inline-flex" />
+              <EyebrowSkeleton className="mb-2 w-40" />
+              <div aria-hidden="true" className="space-y-2">
+                <Skeleton className="h-8 w-full sm:h-9 md:h-11 lg:h-[4.4rem]" />
+                <Skeleton className="h-8 w-[88%] sm:h-9 md:h-11 lg:h-[4.4rem]" />
+                <Skeleton className="h-8 w-[58%] sm:h-9 md:h-11 lg:h-[4.4rem]" />
               </div>
-              <div className="mt-2 rounded-3xl border border-nav-border bg-nav-panel p-2 nav:mt-4 nav:p-2.5">
-                <div className="flex min-h-12 items-center rounded-2xl border border-nav-border bg-nav-background px-3 py-2 nav:min-h-16 nav:px-4 nav:py-3">
-                  <div className="space-y-2">
-                    <Skeleton className="h-3.5 w-28" />
-                    <Skeleton className="h-3 w-36" />
-                  </div>
+              <ParagraphSkeleton
+                className="mt-4 max-w-xl"
+                widths={["w-full", "w-[88%]"]}
+              />
+              <div className="mt-6 grid w-full max-w-[28rem] grid-cols-2 items-center gap-2.5">
+                <Skeleton className="h-11 w-full rounded-full" />
+                <Skeleton className="h-11 w-full rounded-full" />
+              </div>
+              <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+                <div className="inline-flex items-center gap-1.5">
+                  <Skeleton className="size-3.5 shrink-0" />
+                  <Skeleton className="h-3.5 w-36 max-w-full" />
                 </div>
-              </div>
-              <div className="mt-2 grid grid-cols-2 gap-2 nav:mt-3">
-                <Skeleton className="h-10 w-full rounded-full" />
-                <Skeleton className="h-10 w-full rounded-full" />
+                <div className="inline-flex items-center gap-1.5">
+                  <Skeleton className="size-3.5 shrink-0" />
+                  <Skeleton className="h-3.5 w-28" />
+                </div>
               </div>
             </div>
           </div>
