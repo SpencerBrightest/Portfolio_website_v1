@@ -34,7 +34,7 @@ export function Hero() {
                 id="hero-heading"
                 className="text-[2rem] leading-[0.98] tracking-[-0.05em] text-nav-foreground sm:text-4xl md:text-[2.75rem] lg:text-[4.5rem]"
               >
-                Better technology starts with people.
+                Better <span className="text-about-accent"> technology </span> starts with people.
               </Heading>
 
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-nav-muted sm:text-base">
