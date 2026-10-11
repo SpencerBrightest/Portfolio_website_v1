@@ -9,6 +9,8 @@ export type Project = {
   image?: {
     src: string
     alt: string
+    width: number
+    height: number
   }
   githubUrl?: string
   liveUrl?: string
@@ -38,6 +40,8 @@ The project is deployed on Vercel with automatic preview deployments for every p
     image: {
       src: "/images/projects/mixtas-hero-image.jpg",
       alt: "Mixtas e-commerce storefront hero — woman wearing colorful sunglasses against teal background with Jackets for the modern man headline",
+      width: 1200,
+      height: 630,
     },
     githubUrl: "https://github.com/SpencerBrightest/Mixtas",
     liveUrl: "https://mixtas.vercel.app",

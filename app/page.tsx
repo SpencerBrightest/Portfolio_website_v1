@@ -1,11 +1,21 @@
 // Homepage section order; add blog articles through content/blog and feature their slugs in BlogPreview.
-import { BlogPreview } from "@/components/blog/blog-preview"
-import { Contact } from "@/components/contact/contact"
 import { Hero } from "@/components/hero/hero"
 import { SelectedWork } from "@/components/projects/selected-work"
-import { StackMarquee } from "@/components/stack/stack-marquee"
 import { Reveal } from "@/components/ui/reveal"
 import { Section } from "@/components/ui/section"
+import dynamic from "next/dynamic"
+
+const BlogPreview = dynamic(() => import("@/components/blog/blog-preview").then((mod) => mod.BlogPreview), {
+  loading: () => null,
+})
+
+const StackMarquee = dynamic(() => import("@/components/stack/stack-marquee").then((mod) => mod.StackMarquee), {
+  loading: () => null,
+})
+
+const Contact = dynamic(() => import("@/components/contact/contact").then((mod) => mod.Contact), {
+  loading: () => null,
+})
 
 export default function Home() {
   return (

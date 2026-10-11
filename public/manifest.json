@@ -1,0 +1,45 @@
+{
+  "name": "Spencer Bright — Developer Portfolio",
+  "short_name": "Spencer Bright",
+  "description": "Portfolio and writing by Spencer Bright, Software Engineer & Computer Engineering Student.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF8",
+  "theme_color": "#111111",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/og.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["technology", "developer", "portfolio"],
+  "lang": "en",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Read articles by Spencer Bright",
+      "url": "/blog",
+      "icons": [{ "src": "/og.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Work",
+      "short_name": "Work",
+      "description": "View projects by Spencer Bright",
+      "url": "/work",
+      "icons": [{ "src": "/og.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "About",
+      "short_name": "About",
+      "description": "Learn more about Spencer Bright",
+      "url": "/about",
+      "icons": [{ "src": "/og.svg", "sizes": "192x192" }]
+    }
+  ]
+}
