@@ -188,6 +188,15 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-instrument-sans), sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-instrument-sans), sans-serif;
   }
   html {
     @apply font-sans;
@@ -214,6 +223,7 @@
 
 @layer components {
   p {
+    font-family: var(--font-instrument-sans), sans-serif;
     font-size: var(--body-copy-size);
     line-height: var(--body-copy-line-height);
   }
