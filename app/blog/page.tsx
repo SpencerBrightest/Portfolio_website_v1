@@ -50,7 +50,7 @@ export default async function BlogPage() {
               {posts.map((post, index) => (
                 <li key={post.slug} className="min-w-0">
                   <Reveal delay={index * 0.08}>
-                    <PostCard post={post} />
+                    <PostCard post={post} loading={index < 2 ? "eager" : "lazy"} />
                   </Reveal>
                 </li>
               ))}

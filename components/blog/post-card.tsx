@@ -18,9 +18,10 @@ function formatDate(date?: string) {
 
 type PostCardProps = {
   post: BlogPostSummary
+  loading?: "eager" | "lazy"
 }
 
-export function PostCard({ post }: PostCardProps) {
+export function PostCard({ post, loading = "lazy" }: PostCardProps) {
   return (
     <article className="group overflow-hidden rounded-[14px] border border-nav-border bg-nav-panel transition-colors hover:border-nav-muted">
       <div className="grid md:grid-cols-[minmax(13rem,0.8fr)_minmax(0,1.2fr)] md:items-stretch">
@@ -35,6 +36,7 @@ export function PostCard({ post }: PostCardProps) {
               alt={post.image.alt}
               width={960}
               height={540}
+              loading={loading}
               sizes="(min-width: 768px) 38vw, 100vw"
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             />

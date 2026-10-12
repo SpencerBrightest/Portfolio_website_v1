@@ -31,6 +31,7 @@ export function BlogPreviewCard({ post }: BlogPreviewCardProps) {
               src={post.image.src}
               alt={post.image.alt}
               fill
+              loading="eager"
               sizes="(min-width: 51.25rem) 32rem, 100vw"
               className="object-cover object-top"
             />
