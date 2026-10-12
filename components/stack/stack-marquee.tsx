@@ -1,3 +1,5 @@
+"use client"
+
 // Loops a duplicated tools list; add or reorder tools in data/stack.ts.
 import { TechIcon } from "@/components/stack/tech-icon"
 import { stack } from "@/data/stack"

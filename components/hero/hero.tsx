@@ -20,7 +20,7 @@ export function Hero() {
       <HeroGrid />
       <div className="relative z-10 w-full">
         <Container>
-          <div className="grid items-center gap-5 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:gap-8 nav:gap-12">
+          <div className="grid items-center gap-5 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:items-start md:gap-8 nav:gap-12">
             <Reveal className="order-2 w-full max-w-2xl md:order-1">
               <p className="mb-3 hidden items-center gap-2 rounded-full border border-nav-border px-3 py-1.5 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-nav-muted md:inline-flex">
                 Available for new work
@@ -71,7 +71,7 @@ export function Hero() {
               </div>
             </Reveal>
 
-            <Reveal className="order-1 w-full max-w-[13rem] justify-self-center sm:max-w-[18rem] md:order-2 md:ml-auto md:mr-0 md:max-w-[25rem] md:-translate-y-2">
+            <Reveal className="order-1 w-full max-w-[13rem] justify-self-center sm:max-w-[18rem] md:order-2 md:ml-auto md:mr-0 md:max-w-[25rem]">
               <div
                 role="img"
                 aria-label="Portrait upload placeholder"
