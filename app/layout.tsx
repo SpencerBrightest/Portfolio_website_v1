@@ -157,8 +157,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/og.svg" />
       </head>
       <body className="flex min-h-full flex-col bg-nav-background text-nav-foreground">
         <ThemeProvider>
