@@ -7,9 +7,9 @@ export type SiteContact = {
 
 export const siteConfig = {
   name: "Spencer Bright",
-  title: "Spencer Bright — Developer, Builder, Creator",
+  title: "Spencer Bright  Developer, Builder, Creator",
   description: "Portfolio and writing by Spencer Bright, Software Engineer & Computer Engineering Student.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://spencerbright.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   ogImage: "/og.svg",
   twitterCreator: "@spencer_bright",
 }

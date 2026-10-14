@@ -1,5 +1,6 @@
 // Homepage hero section with a cleaner two-column layout and restrained utility icons.
 import { ArrowRight, Download, Eye, Mail, MapPin } from "lucide-react"
+import Image from "next/image"
 
 import { ButtonLink } from "@/components/ui/button-link"
 import { Container } from "@/components/ui/container"
@@ -73,14 +74,18 @@ export function Hero() {
 
             <Reveal className="order-1 w-full max-w-[13rem] justify-self-center sm:max-w-[18rem] md:order-2 md:ml-auto md:mr-0 md:max-w-[25rem]">
               <div
-                role="img"
-                aria-label="Portrait upload placeholder"
-                className="aspect-square rounded-[1.6rem] border border-nav-border bg-nav-panel p-2 nav:p-3"
+                className="relative aspect-square overflow-hidden rounded-[1.6rem] border border-nav-border bg-nav-panel p-2 shadow-sm nav:p-3 dark:shadow-black/20"
               >
-                <div
-                  aria-hidden="true"
-                  className="size-full rounded-[1.25rem] border border-nav-border bg-nav-background"
-                />
+                <div className="relative size-full overflow-hidden rounded-[1.25rem] border border-nav-border bg-nav-background">
+                  <Image
+                    src="/images/blog/BCC_2026.jpeg"
+                    alt="Spencer Bright at the BCC 2026 technology event"
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 25rem, (min-width: 640px) 18rem, 13rem"
+                    className="object-cover object-center dark:brightness-90 dark:saturate-90"
+                  />
+                </div>
               </div>
 
               <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
