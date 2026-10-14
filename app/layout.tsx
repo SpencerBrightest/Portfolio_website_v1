@@ -158,7 +158,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="flex min-h-full flex-col bg-nav-background text-nav-foreground">
+      <body
+        className="flex min-h-full flex-col bg-nav-background text-nav-foreground"
+        suppressHydrationWarning
+      >
         <ThemeProvider>
           <Navbar />
           {children}
