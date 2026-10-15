@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 import bundleAnalyzer from "@next/bundle-analyzer";
 
 const withBundleAnalyzer = bundleAnalyzer({
@@ -6,6 +7,10 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
+  // Pin file-tracing to this project so a stray lockfile in a parent folder
+  // (outside the git repo) can't hijack the workspace root and emit the
+  // "ignored package-lock.json ... set outputFileTracingRoot" warning.
+  outputFileTracingRoot: path.join(__dirname),
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

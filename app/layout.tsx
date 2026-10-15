@@ -150,8 +150,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* No Google Fonts <link>s here: next/font/google self-hosts the
+            woff2 files from this domain at build time, so preconnecting to
+            fonts.googleapis.com / fonts.gstatic.com is dead weight. */}
         <link rel="dns-prefetch" href="https://github.com" />
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />
