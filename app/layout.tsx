@@ -1,6 +1,6 @@
 // Root application layout configuring fonts, base metadata, theme provider, and shell navigation.
 import type { Metadata, Viewport } from "next"
-import { Instrument_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google"
+import localFont from "next/font/local"
 
 import { Footer } from "@/components/layout/footer"
 import { Navbar } from "@/components/layout/navbar"
@@ -9,23 +9,23 @@ import { ThemeProvider } from "@/components/ui/theme-provider"
 import { siteConfig, siteContact } from "@/data/site"
 import "./globals.css"
 
-const instrumentSans = Instrument_Sans({
-  subsets: ["latin"],
+const instrumentSans = localFont({
+  src: "./fonts/InstrumentSans[wdth,wght].ttf",
   variable: "--font-instrument-sans",
   display: "swap",
   preload: true,
 })
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetbrainsMono = localFont({
+  src: "./fonts/JetBrainsMono[wght].ttf",
   variable: "--font-jetbrains-mono",
   display: "swap",
   preload: true,
 })
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--space-grotesk",
+const spaceGrotesk = localFont({
+  src: "./fonts/SpaceGrotesk[wght].ttf",
+  variable: "--font-space-grotesk",
   display: "swap",
 })
 

@@ -8,10 +8,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-instrument-sans);
-  --font-mono: var(--font-jetbrains-mono);
-  --font-heading: var(--font-instrument-sans);
-  --font-about-display: var(--space-grotesk);
+  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-about-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --color-about-heading: var(--about-heading);
   --color-about-text: var(--about-text);
   --color-about-accent: var(--about-accent);
@@ -188,7 +188,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-instrument-sans), sans-serif;
+    font-family: var(--font-sans);
   }
   h1,
   h2,
@@ -196,7 +196,7 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-instrument-sans), sans-serif;
+    font-family: var(--font-heading);
   }
   html {
     @apply font-sans;
@@ -223,7 +223,7 @@
 
 @layer components {
   p {
-    font-family: var(--font-instrument-sans), sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--body-copy-size);
     line-height: var(--body-copy-line-height);
   }
