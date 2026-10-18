@@ -74,16 +74,17 @@ export function Hero() {
 
             <Reveal className="order-1 w-full max-w-[13rem] justify-self-center sm:max-w-[18rem] md:order-2 md:ml-auto md:mr-0 md:max-w-[25rem]">
               <div
-                className="relative aspect-square overflow-hidden rounded-[1.6rem] border border-nav-border bg-nav-panel p-2 shadow-sm nav:p-3 dark:shadow-black/20"
+                className="relative w-full overflow-hidden rounded-[1.6rem] border border-nav-border bg-nav-panel p-2 shadow-sm nav:p-3 dark:shadow-black/20"
               >
-                <div className="relative size-full overflow-hidden rounded-[1.25rem] border border-nav-border bg-nav-background">
+                <div className="overflow-hidden rounded-[1.25rem] border border-nav-border bg-nav-background">
                   <Image
-                    src="/images/blog/BCC_2026.jpeg"
-                    alt="Spencer Bright at the BCC 2026 technology event"
-                    fill
+                    src="/images/Hero%20Image.jpg"
+                    alt="Spencer Bright"
+                    width={810}
+                    height={1024}
                     priority
                     sizes="(min-width: 1024px) 25rem, (min-width: 640px) 18rem, 13rem"
-                    className="object-cover object-center dark:brightness-90 dark:saturate-90"
+                    className="block h-auto w-full dark:brightness-90 dark:saturate-90"
                   />
                 </div>
               </div>

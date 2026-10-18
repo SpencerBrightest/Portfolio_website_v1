@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 import { SocialIcon } from "@/components/ui/social-icon"
@@ -43,12 +44,14 @@ export function ArticleSidebar({ title, url, tags, featuredPosts }: ArticleSideb
           Author
         </h2>
         <div className="flex items-center gap-3">
-          <span
-            aria-hidden="true"
-            className="grid size-11 shrink-0 place-items-center rounded-full bg-nav-hover font-heading text-sm font-semibold text-nav-foreground"
-          >
-            SB
-          </span>
+          <Image
+            src="/images/Hero%20Image.jpg"
+            alt="Spencer Bright"
+            width={44}
+            height={44}
+            sizes="44px"
+            className="size-11 shrink-0 rounded-full object-cover object-center"
+          />
           <div>
             <p className="text-sm font-semibold text-nav-foreground">Spencer Bright</p>
             <p className="text-xs text-nav-muted">Developer · Builder · Creator</p>
