@@ -1,6 +1,5 @@
-// Root application layout configuring fonts, base metadata, theme provider, and shell navigation.
+// Root application layout configuring metadata, theme provider, and shell navigation.
 import type { Metadata, Viewport } from "next"
-import localFont from "next/font/local"
 
 import { Footer } from "@/components/layout/footer"
 import { Navbar } from "@/components/layout/navbar"
@@ -8,26 +7,6 @@ import { WhatsAppFloat } from "@/components/contact/whatsapp-float"
 import { ThemeProvider } from "@/components/ui/theme-provider"
 import { siteConfig, siteContact } from "@/data/site"
 import "./globals.css"
-
-const instrumentSans = localFont({
-  src: "./fonts/InstrumentSans[wdth,wght].ttf",
-  variable: "--font-instrument-sans",
-  display: "swap",
-  preload: true,
-})
-
-const jetbrainsMono = localFont({
-  src: "./fonts/JetBrainsMono[wght].ttf",
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-  preload: true,
-})
-
-const spaceGrotesk = localFont({
-  src: "./fonts/SpaceGrotesk[wght].ttf",
-  variable: "--font-space-grotesk",
-  display: "swap",
-})
 
 export const viewport: Viewport = {
   themeColor: [
@@ -146,7 +125,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${instrumentSans.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable}`}
+      className="h-full antialiased"
       suppressHydrationWarning
     >
       <head>

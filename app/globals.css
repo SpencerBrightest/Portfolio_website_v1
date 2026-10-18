@@ -71,6 +71,9 @@
 }
 
 :root {
+  --font-instrument-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-jetbrains-mono: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  --font-space-grotesk: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
