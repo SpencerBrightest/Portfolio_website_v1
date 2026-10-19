@@ -48,15 +48,28 @@ The project is deployed on Vercel with automatic preview deployments for every p
     postedAt: "07/06/2026",
   },
   {
-    slug: "Poste",
-    title: "Poste",
-    category: "Web app",
-    shortDescription: "A fullstack Saas App for Social Media Management",
-    description: "Comming soon",
-    tags: ["Next.js", "Tailwind", "Node.js","Prisma","Fapshi","Gemini","Cloudinary"],
+    slug: "uptime-monitoring-website",
+    title: "Uptime Monitoring-website",
+    category: "Monitoring · Full-stack SaaS",
+    shortDescription: "A full-stack SaaS platform for monitoring website availability and keeping track of service health.",
+    description: `Uptime Monitoring SaaS is a full-stack web application that helps users monitor the availability of their websites and services from a focused, easy-to-use dashboard.
+
+The platform combines a responsive React frontend with a Node.js and Express backend to deliver a clear monitoring experience and reliable client-server communication. JWT-based authentication protects user accounts and keeps monitoring data private, while the application architecture provides a practical foundation for tracking service health and responding to downtime.
+
+Built as a production-ready SaaS project and deployed on Render, this application demonstrates end-to-end web development across interface design, API development, authentication, and deployment.`,
+    tags: ["React", "Node.js", "Express", "JWT","Nodemailer","Mongodb","Render"],
+    image: {
+      src: "/images/projects/image-1791977516580.png",
+      alt: "Uptime Monitoring SaaS dashboard for monitoring website availability",
+      width: 1372,
+      height: 640,
+    },
+    githubUrl: "https://github.com/SpencerBrightest/Uptime-monitor-Saas-App",
+    liveUrl: "https://uptime-monitor-saas-app-1.onrender.com/",
+    postedAt: "07/07/2026"
   },
   {
-    slug: "expense-tracker",
+    slug: "Expense Tracker",
     title: "Expense Tracker",
     category: "Mobile app",
     shortDescription: "A clean, intuitive mobile experience for keeping everyday spending in view. Provides budget tracking, dynamic spending categorization, and cloud synchronization.",

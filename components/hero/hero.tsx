@@ -1,5 +1,6 @@
 // Homepage hero section with a cleaner two-column layout and restrained utility icons.
 import { ArrowRight, Download, Eye, Mail, MapPin } from "lucide-react"
+import Image from "next/image"
 
 import { ButtonLink } from "@/components/ui/button-link"
 import { Container } from "@/components/ui/container"
@@ -20,7 +21,7 @@ export function Hero() {
       <HeroGrid />
       <div className="relative z-10 w-full">
         <Container>
-          <div className="grid items-center gap-5 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:gap-8 nav:gap-12">
+          <div className="grid items-center gap-5 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:items-start md:gap-8 nav:gap-12">
             <Reveal className="order-2 w-full max-w-2xl md:order-1">
               <p className="mb-3 hidden items-center gap-2 rounded-full border border-nav-border px-3 py-1.5 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-nav-muted md:inline-flex">
                 Available for new work
@@ -71,16 +72,21 @@ export function Hero() {
               </div>
             </Reveal>
 
-            <Reveal className="order-1 w-full max-w-[13rem] justify-self-center sm:max-w-[18rem] md:order-2 md:ml-auto md:mr-0 md:max-w-[25rem] md:-translate-y-2">
+            <Reveal className="order-1 w-full max-w-[13rem] justify-self-center sm:max-w-[18rem] md:order-2 md:ml-auto md:mr-0 md:max-w-[25rem]">
               <div
-                role="img"
-                aria-label="Portrait upload placeholder"
-                className="aspect-square rounded-[1.6rem] border border-nav-border bg-nav-panel p-2 nav:p-3"
+                className="relative w-full overflow-hidden rounded-[1.6rem] border border-nav-border bg-nav-panel p-2 shadow-sm nav:p-3 dark:shadow-black/20"
               >
-                <div
-                  aria-hidden="true"
-                  className="size-full rounded-[1.25rem] border border-nav-border bg-nav-background"
-                />
+                <div className="overflow-hidden rounded-[1.25rem] border border-nav-border bg-nav-background">
+                  <Image
+                    src="/images/Hero%20Image.jpg"
+                    alt="Spencer Bright"
+                    width={810}
+                    height={1024}
+                    priority
+                    sizes="(min-width: 1024px) 25rem, (min-width: 640px) 18rem, 13rem"
+                    className="block h-auto w-full dark:brightness-90 dark:saturate-90"
+                  />
+                </div>
               </div>
 
               <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">

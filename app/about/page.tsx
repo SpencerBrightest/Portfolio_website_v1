@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 import { InspirationSection } from "@/components/about/inspiration-section"
+import { ExperienceSection } from "@/components/about/experience-section"
 import { RecentWriting } from "@/components/about/recent-writing"
 import { UsageSection } from "@/components/about/usage-section"
 import { Container } from "@/components/ui/container"
@@ -87,6 +88,7 @@ export default function AboutPage() {
           </Reveal>
         </article>
       </Container>
+      <ExperienceSection />
       <RecentWriting />
       <UsageSection />
       <InspirationSection />
