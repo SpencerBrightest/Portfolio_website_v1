@@ -48,7 +48,7 @@ export default function WorkPage() {
           <ul className="mt-10 grid list-none grid-cols-1 items-stretch gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {projects.map((project, index) => (
               <li key={project.slug} className="min-w-0">
-                <Reveal delay={index * 0.08}>
+                <Reveal className="h-full" delay={index * 0.08}>
                   <ProjectCard project={project} />
                 </Reveal>
               </li>

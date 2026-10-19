@@ -12,7 +12,7 @@ export async function RecentWriting() {
         <ul className="mt-8 grid list-none grid-cols-1 gap-5 p-0 nav:grid-cols-2">
           {posts.map((post, index) => (
             <li key={post.slug} className="h-full min-w-0">
-              <Reveal delay={index * 0.08}>
+              <Reveal className="h-full" delay={index * 0.08}>
                 <BlogPreviewCard post={post} />
               </Reveal>
             </li>
