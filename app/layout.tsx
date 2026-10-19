@@ -1,6 +1,5 @@
-// Root application layout configuring fonts, base metadata, theme provider, and shell navigation.
+// Root application layout configuring metadata, theme provider, and shell navigation.
 import type { Metadata, Viewport } from "next"
-import { Instrument_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google"
 
 import { Footer } from "@/components/layout/footer"
 import { Navbar } from "@/components/layout/navbar"
@@ -8,26 +7,6 @@ import { WhatsAppFloat } from "@/components/contact/whatsapp-float"
 import { ThemeProvider } from "@/components/ui/theme-provider"
 import { siteConfig, siteContact } from "@/data/site"
 import "./globals.css"
-
-const instrumentSans = Instrument_Sans({
-  subsets: ["latin"],
-  variable: "--font-instrument-sans",
-  display: "swap",
-  preload: true,
-})
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-  preload: true,
-})
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--space-grotesk",
-  display: "swap",
-})
 
 export const viewport: Viewport = {
   themeColor: [
@@ -80,6 +59,11 @@ const websiteSchema = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   title: {
     default: siteConfig.title,
     template: `%s | ${siteConfig.name}`,
@@ -146,21 +130,23 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${instrumentSans.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable}`}
+      className="h-full antialiased"
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* No Google Fonts <link>s here: next/font/google self-hosts the
+            woff2 files from this domain at build time, so preconnecting to
+            fonts.googleapis.com / fonts.gstatic.com is dead weight. */}
         <link rel="dns-prefetch" href="https://github.com" />
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/og.svg" />
       </head>
-      <body className="flex min-h-full flex-col bg-nav-background text-nav-foreground">
+      <body
+        className="flex min-h-full flex-col bg-nav-background text-nav-foreground"
+        suppressHydrationWarning
+      >
         <ThemeProvider>
           <Navbar />
           {children}

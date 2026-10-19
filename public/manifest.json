@@ -9,7 +9,7 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/og.svg",
+      "src": "/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
@@ -25,21 +25,21 @@
       "short_name": "Blog",
       "description": "Read articles by Spencer Bright",
       "url": "/blog",
-      "icons": [{ "src": "/og.svg", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
     },
     {
       "name": "Work",
       "short_name": "Work",
       "description": "View projects by Spencer Bright",
       "url": "/work",
-      "icons": [{ "src": "/og.svg", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
     },
     {
       "name": "About",
       "short_name": "About",
       "description": "Learn more about Spencer Bright",
       "url": "/about",
-      "icons": [{ "src": "/og.svg", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
     }
   ]
 }
