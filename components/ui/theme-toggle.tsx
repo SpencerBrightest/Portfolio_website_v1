@@ -5,6 +5,7 @@ import { useTheme } from "next-themes"
 import { useSyncExternalStore } from "react"
 
 import { Button } from "@/components/ui/button"
+import { Skeleton } from "@/components/ui/skeleton"
 
 const subscribe = () => () => {}
 const getClientSnapshot = () => true
@@ -24,6 +25,20 @@ export function ThemeToggle() {
   )
   const { setTheme, theme } = useTheme()
   const activeTheme = mounted ? theme ?? "system" : "system"
+
+  if (!mounted) {
+    return (
+      <div
+        role="status"
+        aria-label="Loading theme selector"
+        className="inline-flex shrink-0 items-center gap-0.5 rounded-full border border-nav-border bg-nav-panel p-1"
+      >
+        {themeOptions.map(({ value }) => (
+          <Skeleton key={value} className="size-9 rounded-full" />
+        ))}
+      </div>
+    )
+  }
 
   return (
     <div
