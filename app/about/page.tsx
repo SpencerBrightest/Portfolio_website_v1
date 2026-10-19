@@ -52,7 +52,7 @@ export default function AboutPage() {
             <div className="mt-8 space-y-6 text-about-text sm:mt-10 sm:space-y-7">
               <p>
                 I am a Level 400 Computer Engineering student at the National Higher Polytechnic
-                Institute of the University of Bamenda (NAHPI UBA). My ultimate career vision is to
+                Institute of the University of Bamenda (NAHPI UBa). My ultimate career vision is to
                 become a leading <span className="text-about-accent">cybersecurity expert</span>. To
                 build the strongest possible foundation for securing digital infrastructure, I am
                 currently anchoring my skills in robust{" "}
@@ -65,10 +65,10 @@ export default function AboutPage() {
                 Over the past two years, I have actively translated academic theory into practical,
                 industry-level applications. I began my journey in{" "}
                 <span className="text-about-accent">web development</span> in 2024, which quickly
-                opened doors to an academic internship at the TIC Foundation in 2025 where I honed my
+                opened doors to an academic internship at the <span className="text-about-accent">  TIC Foundation </span> in 2025 where I honed my
                 core engineering workflows. Building on that momentum, I completed a{" "}
                 <span className="text-about-accent">mobile application development internship</span>{" "}
-                at Innova in 2026, diversifying my developer toolkit across both web and mobile
+                at <span className="text-about-accent"> I-nnova </span> in 2026, diversifying my developer toolkit across both web and mobile
                 ecosystems.
               </p>
 
